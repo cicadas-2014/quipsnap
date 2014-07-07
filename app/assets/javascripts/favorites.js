@@ -1,24 +1,38 @@
 var quoteFavorites = {
-	likeQuote: function (selector) {
+
+	init: function() {
+		// user favorites a quote
+		$(".quotes").on("click", "button.unliked-quote", this.addToFavorites.bind(this));
+		// user unfavorites a quote
+		$(".quotes").on("click", "button.liked-quote", this.removeFromFavorites.bind(this));
+	},
+
+	displayLikeQuote: function (selector) {
 		$(selector).removeClass("unliked-quote");
 		$(selector).addClass("liked-quote");
 	},
 
-	unlikeQuote: function(selector) {
+	displayUnlikeQuote: function(selector) {
 		$(selector).removeClass("liked-quote");
 		$(selector).addClass("unliked-quote");
 	},
 
-	addToFavorites: function(selector) {
-		var quoteId = $(selector).parent().parent().attr("id");
+	addToFavorites: function(e) {
+		e.preventDefault();
+		this.displayLikeQuote(e.target);
+
+		var quoteId = $(e.target).parent().parent().attr("id");
 		var ajaxRequest = $.ajax({
 			url: "/quotes/" + quoteId + "/favorite",
 			type: "post"
 		});
 	},
 
-	removeFromFavorites: function(selector) {
-		var quoteId = $(selector).parent().parent().attr("id");
+	removeFromFavorites: function(e) {
+		e.preventDefault();
+		this.displayUnlikeQuote(e.target);
+
+		var quoteId = $(e.target).parent().parent().attr("id");
 		var ajaxRequest = $.ajax({
 			url: "/quotes/" + quoteId + "/unfavorite",
 			type: "delete"
@@ -27,17 +41,5 @@ var quoteFavorites = {
 };
 
 $(document).ready(function(){
-	// user favorites a quote
-	$(".quote-options").on("click", "button.unliked-quote", function(e) {
-		e.preventDefault();
-		quoteFavorites.likeQuote(e.target);
-		quoteFavorites.addToFavorites(e.target);
-	});
-
-	// user unfavorites a quote
-	$(".quote-options").on("click", "button.liked-quote", function(e) {
-		e.preventDefault();
-		quoteFavorites.unlikeQuote(e.target);
-		quoteFavorites.removeFromFavorites(e.target);
-	});
+	quoteFavorites.init();
 });

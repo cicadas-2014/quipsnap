@@ -42,4 +42,8 @@ RSpec.describe Quote, :type => :model do
 	it "has many comments" do
 		expect(build(:quote)).to respond_to :comments
 	end
+
+	it "has many users that have favorited" do
+		expect(build(:quote)).to respond_to :favorited_users
+	end
 end
