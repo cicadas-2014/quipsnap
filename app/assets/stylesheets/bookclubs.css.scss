@@ -155,37 +155,59 @@ button#btn1 {
 }
 
 form#new_bookclub {
-	float:left;
-	margin-left: 50px;
 	display: none;
+	position: absolute;
+	right: 100px;
+	top: 125px;
 
 	label {
 		display: block;
 		color: white;
 		font-size: 18px;
-		margin-left: 40px;		
+		text-align: left;		
 	}
 
 	#submit, #cancel {
 		background-color: white;
 		margin-top: 10px;
-		
-		font-size: 18px;
+		border-radius: 10px;
+		font-size: 14px;
+		border: none;
+		color: $quote-info-color;
 	}
 
-	input#bookclub_name {
+	#cancel{
+		position: absolute;
+		right: 0;
+	}
 
+	#bookclub_name {
+		width: 200px;
 		height: 22px;
 		border-radius: 6px;
 		margin-bottom: 5px;
-		margin-left: 40px;		
+		resize: none;
 	}
 
-	input#bookclub_description {
-
+	#bookclub_description {
+		width: 200px;
 		height: 66px;
 		border-radius: 6px;
-		margin-left: 40px;		
+		resize: none;
 	}
 }
 
+
+#btn1 {
+	background: white;
+	border: 1px $quote-info-color solid;
+	color: $quote-info-color;
+	width: 100px;
+	border-radius: 10px;
+	position: absolute;
+	right: 150px;
+	padding: 10px;
+	cursor: pointer;
+	margin: 0;
+
+}

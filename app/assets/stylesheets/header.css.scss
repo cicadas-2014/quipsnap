@@ -193,3 +193,8 @@ input.nav-signout {
   height: 50px;
   background: url($icon-signin) no-repeat center;
 }
+
+.username p {
+  color: $logo-color-2;
+  font-weight: bolder;
+}
