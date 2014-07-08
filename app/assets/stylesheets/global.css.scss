@@ -16,6 +16,10 @@ html, html a {
   color: $main-font-color;
   font-family: $global-font;
   outline: none;
+  text-decoration: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
