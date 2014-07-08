@@ -13,14 +13,14 @@ class QuotesController < ApplicationController
     else
       @search = Quote.search(params[:q])
     end
-    @quotes = @search.result.includes(:user).order("created_at DESC")
+    @quotes = @search.result.includes(:user).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = logged_in? ? current_user.bookclubs : nil
     render "users/index"
   end
 
   def search
     @search = Quote.search(params[:q])
-  	@quotes = @search.result.includes(:user).order("created_at DESC")
+  	@quotes = @search.result.includes(:user).order("created_at DESC").paginate(page: params[:page], per_page: 5)
   	@bookclubs = logged_in? ? current_user.bookclubs : nil
   	render "users/index"
   end
@@ -42,9 +42,9 @@ class QuotesController < ApplicationController
   # GET /favorites
   # returns json of current user's favorited quotes
   def favorites
-    redirect_to home_path if !logged_in?
+    redirect_to home_path and return unless logged_in?
     @search = Quote.search(params[:q])
-    @quotes = current_user.favorites.order("updated_at DESC")
+    @quotes = current_user.favorites.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = logged_in? ? current_user.bookclubs : nil
     if request.xhr?
       render json: {quotes: @quotes}

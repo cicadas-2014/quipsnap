@@ -73,6 +73,12 @@ form.comment-form, form.reply-comment-form {
 		border-radius: 3px;
 		background-color: lightgrey;
 		opacity: 0.5;
+		cursor: pointer;
+	}
+
+	input:hover{
+		background-color: black;
+		color: white;
 	}
 }
 
@@ -87,15 +93,41 @@ textarea.comment-box, textarea.reply-comment-box {
 .cancel-comment {
 	position: absolute;
 	width: 60px;
-	right:40px
+	right:40px;
+	cursor: pointer;
 }
 
 .cancel-reply {
 	position: absolute;
 	width: 60px;
-	right:230px
+	right:230px;
+	cursor: pointer;
 }
 
 #comments-title {
 	font-size: 2em;
+}
+
+#comment-success, #comment-failure {
+	position: fixed;
+	width: 200px;
+	padding: 15px;
+	display:none;
+	left: 600px;
+	top: 200px;
+	text-align: center;
+	z-index: 10000;
+	border-radius: 10px;	
+	color: white;
+	font-size: 15px;
+	font-family: $global-font;
+
+}
+
+#comment-success {	
+	background-color: $success-background;	
+}
+
+#comment-failure {
+	background-color: $error-background;
 }

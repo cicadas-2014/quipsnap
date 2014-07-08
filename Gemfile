@@ -34,6 +34,7 @@ gem 'ransack', '~> 1.2.3'
 gem 'rails_12factor', group: :production
 
 gem 'goodreads'
+gem 'twitter'
 
 gem 'will_paginate', '~> 3.0.5'
 

@@ -2,7 +2,7 @@ class BookclubsController < ApplicationController
 
   # GET /bookclubs
   def index
-    redirect_to home_path if !logged_in?
+    redirect_to home_path unless logged_in?
     @search = Quote.search(params[:q])
     @bookclub = Bookclub.new
   end
@@ -40,14 +40,21 @@ class BookclubsController < ApplicationController
 
   # GET /bookclubs/:bookclub_id
   def show
-    @quotes = Bookclub.find(params[:bookclub_id]).quotes
-    if logged_in?
+    redirect_to home_path and return unless logged_in?
+
+    @search = Quote.search(params[:q])
+    @quotes = Bookclub.find(params[:bookclub_id]).quotes.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
+    @bookclubs = current_user.bookclubs
+
+    if request.xhr?
       @favorites = @quotes.map do |quote| 
         QuoteFavorite.find_by(quote_id: quote.id, user_id: current_user.id) ? true : false
       end
+      render json: {quotes: @quotes, is_favorites: @favorites } 
+    else
+      render "users/index"
     end
 
-    render json: {quotes: @quotes, is_favorites: @favorites } 
   end
 
   # PUT /bookclubs/join
