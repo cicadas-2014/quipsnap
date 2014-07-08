@@ -73,6 +73,12 @@ form.comment-form, form.reply-comment-form {
 		border-radius: 3px;
 		background-color: lightgrey;
 		opacity: 0.5;
+		cursor: pointer;
+	}
+
+	input:hover{
+		background-color: black;
+		color: white;
 	}
 }
 
@@ -87,13 +93,15 @@ textarea.comment-box, textarea.reply-comment-box {
 .cancel-comment {
 	position: absolute;
 	width: 60px;
-	right:40px
+	right:40px;
+	cursor: pointer;
 }
 
 .cancel-reply {
 	position: absolute;
 	width: 60px;
-	right:230px
+	right:230px;
+	cursor: pointer;
 }
 
 #comments-title {

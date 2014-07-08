@@ -42,7 +42,7 @@ class QuotesController < ApplicationController
   # GET /favorites
   # returns json of current user's favorited quotes
   def favorites
-    redirect_to home_path if !logged_in?
+    redirect_to home_path and return unless logged_in?
     @search = Quote.search(params[:q])
     @quotes = current_user.favorites.order("updated_at DESC")
     @bookclubs = logged_in? ? current_user.bookclubs : nil
