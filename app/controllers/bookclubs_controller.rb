@@ -43,7 +43,7 @@ class BookclubsController < ApplicationController
     redirect_to home_path and return unless logged_in?
 
     @search = Quote.search(params[:q])
-    @quotes = Bookclub.find(params[:bookclub_id]).quotes.order("updated_at DESC")
+    @quotes = Bookclub.find(params[:bookclub_id]).quotes.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = current_user.bookclubs
 
     if request.xhr?

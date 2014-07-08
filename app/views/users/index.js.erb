@@ -1,0 +1,8 @@
+$('.quotes').append(' <% @quotes.each do |quote| %> <%= j render partial: "quotes/show_quote_limit", locals: {quote: quote} %> <% end %>');
+
+<% if @quotes.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @quotes %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

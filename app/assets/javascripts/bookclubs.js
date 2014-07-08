@@ -49,9 +49,7 @@ var Bookclubs = {
     }
 
     this.bookclubsHtml += "</div>";
-
     $('.bookclubs-all').prepend(this.bookclubsHtml);
-
   },
 
   // Return html for one bookclub
