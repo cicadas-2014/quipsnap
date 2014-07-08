@@ -81,7 +81,7 @@ feature 'Add Bookclubs', :js => true do
     find('#btn1').click
     fill_in 'Name', with: bookclub.name
     fill_in 'Description', with: bookclub.description
-    click_button "Create"
+    find('input#submit').click
     wait_for_ajax_to_finish
     expect(page).to have_content(bookclub.name)
   end
@@ -94,7 +94,7 @@ feature 'Add Bookclubs', :js => true do
     find('#btn1').click
     fill_in 'Name', with: bookclub.name
     fill_in 'Description', with: bookclub.description
-    click_button "Create"
+    find('input#submit').click
     wait_for_ajax_to_finish
     expect(page).to_not have_content(bookclub.description)
   end

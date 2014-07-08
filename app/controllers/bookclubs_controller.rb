@@ -22,7 +22,7 @@ class BookclubsController < ApplicationController
   # GET /bookclubs/all
   def all
     if request.xhr?
-      @bookclubs = Bookclub.all
+      @bookclubs = Bookclub.order(user_id: :asc)
       render json: { bookclubs: @bookclubs }.to_json
     else
       redirect_to home_path
@@ -66,6 +66,12 @@ class BookclubsController < ApplicationController
     bookclub = Bookclub.find(params[:bookclub_id])
     bookclub.users << current_user
     render json: { bookclub_id: bookclub.id }.to_json
+  end
+
+  def delete
+    bookclub = Bookclub.find(params[:id])
+    bookclub.destroy
+    render json: {done: "Deleted bookclub!"}
   end
 
   private

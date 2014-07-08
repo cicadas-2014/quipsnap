@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	post '/bookclubs/create' => "bookclubs#create"
 
 	post '/bookclubs/:bookclub_id/quotes/:quote_id' => 'bookclubs#add_quote'
+	delete '/bookclubs/:id/delete' => 'bookclubs#delete'
 
 	get '/bookclubs/all' => "bookclubs#all"
 	post '/bookclubs' => "bookclubs#create"
@@ -30,9 +31,8 @@ Rails.application.routes.draw do
 	get '/bookclubs/all' => "bookclubs#all"
 	post '/bookclubs' => "bookclubs#create"
 	get '/bookclubs/:bookclub_id' => 'bookclubs#show', as: "show_bookclub"
-
-
 	put '/bookclubs/join' => "bookclubs#join"
+
 
 
 end
