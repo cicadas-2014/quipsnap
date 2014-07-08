@@ -74,17 +74,17 @@ var userFavorites = {
 	getQuoteHtml: function(quote) {
 		var html = "<div class='quote' id='" + quote.id + "'>" +
 			"<div class='content'><img src='/icons/openingquote.png'><p>" + quote.content + "</p><img src='/icons/closingquote.png'></div>" +
-				"<div class='quote-info'><a class='search-author' data-method='post'" +
-				"href='/?q%5Bauthor_name_cont%5D=" + encodeURI(quote.author_name) + "' rel='nofollow'>" + quote.author_name + "</a>"
+				"<div class='quote-info'><a class='search-author' data-method='get'" +
+				"href='/search?q%5Bauthor_name_cont%5D=" + encodeURI(quote.author_name) + "' rel='nofollow'>" + quote.author_name + "</a>"
 		if (quote.book_title != "") {
 			html = html + "<br/>" +
-				"<a class='search-title' data-method='post'" +
-				"href='/?q%5Bbook_title_cont%5D=" + encodeURI(quote.book_title) + 
+				"<a class='search-title' data-method='get'" +
+				"href='/search?q%5Bbook_title_cont%5D=" + encodeURI(quote.book_title) + 
 				"' rel='nofollow'>" + quote.book_title + "</a>";
 		}			
 
-		html = html + "</div><a class='search-user' data-method='post'" + 
-			"href='/?q%5Buser_goodreads_name_cont%5D="+ encodeURI(quote.user_name) + 
+		html = html + "</div><a class='search-user' data-method='get'" + 
+			"href='/search?q%5Buser_goodreads_name_cont%5D="+ encodeURI(quote.user_name) + 
 			"' rel='nofollow'>Created by: " + quote.user_name + "</a>" + 
 			"<div class='quote-options'>" + 
 			"<button class='share-quote'>Share Quote</button>" + 
