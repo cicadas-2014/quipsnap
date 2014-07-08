@@ -16,7 +16,7 @@ header {
 
 /* LOGO */
 
-div.logo {
+.logo {
   display: inline-block;
   margin-left: 1.6em;
 
@@ -143,9 +143,9 @@ select {
 
 .username {
   position: absolute;
-  top: 2px;
   right: 235px;
   width: 280px;
+  text-align: right;
 
   p {
     margin: 0px;
