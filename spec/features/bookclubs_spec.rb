@@ -79,6 +79,7 @@ feature 'Add Bookclubs', :js => true do
     allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit bookclubs_path
+    find('#btn1').click
     fill_in 'Name', with: bookclub.name
     fill_in 'Description', with: bookclub.description
     click_button "Create new club"
@@ -92,6 +93,7 @@ feature 'Add Bookclubs', :js => true do
     allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit bookclubs_path
+    find('#btn1').click
     fill_in 'Name', with: bookclub.name
     fill_in 'Description', with: bookclub.description
     click_button "Create new club"
