@@ -5,3 +5,7 @@
 			<%= render partial: "quotes/show_quote_limit", locals: {quote: quote} %>
 		<% end %>
 </div>
+
+<div id="infinite-scrolling">
+	<%= will_paginate @quotes %>
+</div>	

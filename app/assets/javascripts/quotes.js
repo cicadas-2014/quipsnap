@@ -1,4 +1,23 @@
 var Quote = {
+
+	bind: function() {
+		$(window).on('scroll', this.getMoreQuotesAjax.bind(this));
+	},
+
+	init: function() {
+		this.bind();
+	},
+
+	getMoreQuotesAjax: function() {
+		var more_quotes_url;
+		more_quotes_url = $('.pagination .next_page').attr('href');
+		if (more_quotes_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
+			console.log("hello");
+			$('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />');
+			$.getScript(more_quotes_url);
+		}
+	},
+
 	// make quote draggable and droppable to add to bookclub
 	addToBookclub: function(quoteId,bookclubId,bookclubDiv) {
 		var ajaxRequest = $.ajax({
@@ -40,24 +59,10 @@ var makeDraggable = function() {
 	$("div.quote").draggable({
 		revert: function(dropped){
 			var dropped = dropped && dropped[0].id == "droppable";
-           return !dropped;
+			return !dropped;
 		},
-		start: function(e, ui) { $(this).css('z-index', 1);
-															// ui.helper.animate({
-															// 	width: 80,
-															// 	height: 50,
-															// 	marginLeft: (400-80)/2 - (400/2 - e.offsetX),
-															// 	marginTop: (82-50)/2 - (82/2 - e.offsetY)
-															// });
-
-														 // $(this).find('button, form').hide(); 
-														},
-														 // $(this).css('width', '20%')},
-		stop:  function(e) { $(this).css('z-index', 0); },
-												 // $(this).find('button, form').show(); 
-												 // $(this).css('width','399px'); 
-												 // $(this).css('marginLeft','0');
-												 // $(this).css('marginTop','0.5em');},
+		start: function(e, ui) { $(this).css('z-index', 1);},
+		stop:  function(e) { $(this).css('z-index', 0); },					
 		revertDuration: 150
 	}).each(function() {
 		var top = $(this).position().top;
@@ -78,10 +83,10 @@ var makeDraggable = function() {
 			var bookclubDiv = $(this)
 			Quote.addToBookclub(quoteId,bookclubId,bookclubDiv);
 			
-	},
+		},
 		over:Quote.almostToBookclub,
 		out:Quote.offOfBookclub
-	
+
 	});
 
 };
@@ -91,5 +96,6 @@ $(document).ready(function(){
 	makeDraggable();
 	// a quote on /quotes/:id should not be draggable 
 	$(".show-quote").children(".quote").draggable("destroy");
+	Quote.init();
 })
 
