@@ -75,26 +75,26 @@ var Comment = {
 
 		setTimeout(function() {
 		  $("#comment-success, #comment-failure").hide();
-		}, 500);
+		}, 1000);
 		
-},
+	},
 
-appendResponse: function(response) {
-	if (response.isSuccess) {
-			// if direct comment to a quote..., else is a reply to a comment
-			if (!(response.quote_id == null) && response.parent_id == null) {
-				$("div.quote-comments").append(this.commentHTML(response.comment_id, response.comment_content, response.user));
-			} else {
-				// if the parent div does not have a hide/see replies button, add it
-				var parentDiv = $("div[data-comment-id="+response.parent_id+"]") 
-				if (parentDiv.children("button.less-comments").length == 0 && parentDiv.children("button.more-comments").length == 0) {
-					parentDiv.append("<button class='less-comments'></button>");
+	appendResponse: function(response) {
+		if (response.isSuccess) {
+				// if direct comment to a quote..., else is a reply to a comment
+				if (!(response.quote_id == null) && response.parent_id == null) {
+					$("div.quote-comments").append(this.commentHTML(response.comment_id, response.comment_content, response.user, true));
+				} else {
+					// if the parent div does not have a hide/see replies button, add it
+					var parentDiv = $("div[data-comment-id="+response.parent_id+"]") 
+					if (parentDiv.children("button.less-comments").length == 0 && parentDiv.children("button.more-comments").length == 0) {
+						parentDiv.append("<button class='less-comments'></button>");
+					}
+					parentDiv.append(this.commentHTML(response.comment_id, response.comment_content, response.user, true));
 				}
-				parentDiv.append(this.commentHTML(response.comment_id, response.comment_content, response.user));
 			}
-		}
-		
-		this.displayMessage(response.isSuccess);
+			
+			this.displayMessage(response.isSuccess);
 	},
 
 	// send an ajax request to save the user's comment
