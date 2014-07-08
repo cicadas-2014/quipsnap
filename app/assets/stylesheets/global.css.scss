@@ -17,6 +17,9 @@ html, html a {
   font-family: $global-font;
   outline: none;
   text-decoration: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
