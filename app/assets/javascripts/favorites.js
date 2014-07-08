@@ -64,6 +64,9 @@ var userFavorites = {
 
 	renderFavorites: function(response) {
 		$(".quotes").html("");	
+
+		$(".page-info").html("My Favorites");
+		
 		for (var i = 0; i < response.quotes.length; i++) {
 			var html = this.getQuoteHtml(response.quotes[i]);
 			$(".quotes").append(html);

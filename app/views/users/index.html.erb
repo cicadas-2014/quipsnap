@@ -1,6 +1,26 @@
 <%= render partial: "users/bookclubs" %>
 
+
+<div class='page-info'>
+	<% if @bookclub %>
+		Bookclub: <%= @bookclub.name %>
+		<div class='page-info-bc-desc'><%= @bookclub.description %></div>
+	<% elsif @favorite %>
+		My Favorites
+	<% elsif @search_term %>
+		<%= @search_term %>
+	<% elsif logged_in? %>
+		My Notebook
+	<% else %>
+		All Quotes
+	<% end %>
+	
+</div>
+
+
 <div class="quotes">
+
+
 		<% @quotes.each do |quote| %>
 			<%= render partial: "quotes/show_quote_limit", locals: {quote: quote} %>
 		<% end %>

@@ -43,14 +43,15 @@ class BookclubsController < ApplicationController
     redirect_to home_path and return unless logged_in?
 
     @search = Quote.search(params[:q])
-    @quotes = Bookclub.find(params[:bookclub_id]).quotes.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
+    @bookclub = Bookclub.find(params[:bookclub_id])
+    @quotes = @bookclub.quotes.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = current_user.bookclubs
 
     if request.xhr?
       @favorites = @quotes.map do |quote| 
         QuoteFavorite.find_by(quote_id: quote.id, user_id: current_user.id) ? true : false
       end
-      render json: {quotes: @quotes, is_favorites: @favorites } 
+      render json: {quotes: @quotes, is_favorites: @favorites, name: @bookclub.name, desc: @bookclub.description } 
     else
       render "users/index"
     end
