@@ -36,9 +36,9 @@
 			div.cover-top {
 				border-radius: 5px 0 0 5px;
 				border-left: 3px solid $book-color-2;
-			  height: 20px;
-			  width: 100%;
-			  background-color: $book-color-1;
+				height: 20px;
+				width: 100%;
+				background-color: $book-color-1;
 			}
 
 			div.cover-bottom {
@@ -47,7 +47,7 @@
 				border-bottom: 2px solid $book-color-2; 
 				height: 20px;
 				width: 100%;
-			  background-color: $book-color-1;
+				background-color: $book-color-1;
 			}
 
 			div.book-pages {
@@ -75,24 +75,24 @@
 
 div.bookclub-admin, div.bookclub-non, div.bookclub-belong {
 	box-shadow: 0px 1px 1px $quote-border;
-  border-radius: 5px;
-  margin: 10px 0 0 0;
-  background-color: $quote-background;
-  position: relative;
-  padding: 0.3em;
-  cursor: default;
-  height: 50px;
+	border-radius: 5px;
+	margin: 10px 0 0 0;
+	background-color: $quote-background;
+	position: relative;
+	padding: 0.3em;
+	cursor: default;
+	height: 50px;
 
-  p {
-  	margin-top: 0;
-  	padding-right: 50px;
-  }
+	p {
+		margin-top: 0;
+		padding-right: 50px;
+	}
 
-  button {
-  	position: absolute;
-  	right: 2px;
-  	top: 20px;
-  }
+	button {
+		position: absolute;
+		right: 2px;
+		top: 20px;
+	}
 }
 
 div.bookclubs {
@@ -139,17 +139,28 @@ div.bookclubs-all {
 	}
 }
 
+button#btn1 {
+	float: left;
+	margin-left: 50px;
+	border: none;
+	padding: 0;
+
+	font-size: 14px;
+}
+
 form#new_bookclub {
 	float:left;
 	margin-left: 50px;
+	display: none;
 
 	label {
 		display: block;
 		color: white;
 		font-size: 18px;
+		margin-left: 40px;		
 	}
 
-	#submit {
+	#submit, #cancel {
 		background-color: white;
 		margin-top: 10px;
 		
@@ -160,14 +171,15 @@ form#new_bookclub {
 
 		height: 22px;
 		border-radius: 6px;
-		margin-bottom: 10px;
+		margin-bottom: 5px;
+		margin-left: 40px;		
 	}
 
 	input#bookclub_description {
 
 		height: 66px;
 		border-radius: 6px;
-		
+		margin-left: 40px;		
 	}
 }
 

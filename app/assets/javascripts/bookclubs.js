@@ -8,6 +8,8 @@ var Bookclubs = {
   bind: function() {
     $('.new_bookclub').on('submit', this.sendNewBookclubRequest.bind(this));
     $('.bookclubs-all').on('click', 'button.bookclub-join', this.sendJoinBookclubRequest.bind(this));
+    $('#btn1').on('click', this.displayNewBookclubForm.bind(this));
+    $('input#cancel').on('click', this.hideNewBookclubForm.bind(this));
   },
 
   init: function() {
@@ -19,10 +21,20 @@ var Bookclubs = {
   renderList: function() {
     // Fetch bookclubs on load
     var ajaxRequest = $.ajax({
-          url: '/bookclubs/all',
-          type: 'GET'
-        });
+      url: '/bookclubs/all',
+      type: 'GET'
+    });
     ajaxRequest.done(this.showBookclubListHtml.bind(this));
+  },
+
+
+  displayNewBookclubForm: function(e) {
+    $("form#new_bookclub").show(500);
+  },
+
+  hideNewBookclubForm: function(e) {
+    e.preventDefault();
+    $("form#new_bookclub").hide(500);
   },
 
   // Prepare bookclubs list HTML
@@ -63,15 +75,15 @@ var Bookclubs = {
     }
 
     var html = "<div id='" +
-                bookclub.id.toString() +
-                "'" +
-                belongToBookclub + 
-                "><p>" +
-                bookclub.name +
-                ": " +
-                bookclub.description +
-                joinBookclub +
-                "</p></div>";  
+    bookclub.id.toString() +
+    "'" +
+    belongToBookclub + 
+    "><p>" +
+    bookclub.name +
+    ": " +
+    bookclub.description +
+    joinBookclub +
+    "</p></div>";  
 
     return html;
   },
@@ -96,6 +108,7 @@ var Bookclubs = {
   },
 
   showNewBookclub: function(data) {
+    $("form#new_bookclub").hide();
     $('.bookclubs').append(this.getBookclubHtml(data.bookclub, this.currentUserId()));
     this.formFields().reset();
   },
@@ -111,7 +124,7 @@ var Bookclubs = {
 
     // set id of bookclub to join
     var bookclubId = $(e.target).parent().parent().attr('id');
-    
+
     // remove + button after clicking join
     $(e.target).remove();
 
