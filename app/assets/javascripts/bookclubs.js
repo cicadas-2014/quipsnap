@@ -26,7 +26,7 @@ var Bookclubs = {
   },
 
   // Prepare bookclubs list HTML
-  bookclubsHtml: "<ul class='bookclubs'>",
+  bookclubsHtml: "<div class='bookclubs'>",
 
   // Return html for all bookclubs
   showBookclubListHtml: function(data) {
@@ -36,7 +36,7 @@ var Bookclubs = {
       this.bookclubsHtml += this.getBookclubHtml(bookclub, this.currentUserId());
     }
 
-    this.bookclubsHtml += "</ul>";
+    this.bookclubsHtml += "</div>";
 
     $('.bookclubs-all').prepend(this.bookclubsHtml);
 
@@ -48,8 +48,10 @@ var Bookclubs = {
     // add a + so that the user can join the bookclub
     var joinBookclub = "";
     var belongToBookclub = "";
+
     if ($.inArray(currentUserId, bookclub.user_ids) == -1) {
       joinBookclub = "<button class='bookclub-join'>+</button>";
+      belongToBookclub = "class='bookclub-non'"
     } else {
       belongToBookclub = "class='bookclub-belong'";
     }
@@ -60,16 +62,16 @@ var Bookclubs = {
       belongToBookclub = belongToBookclub.replace(/'$/, " bookclub-admin'");
     }
 
-    var html = "<li id='" +
+    var html = "<div id='" +
                 bookclub.id.toString() +
                 "'" +
                 belongToBookclub + 
-                ">" +
+                "><p>" +
                 bookclub.name +
                 ": " +
                 bookclub.description +
                 joinBookclub +
-                "</li>";  
+                "</p></div>";  
 
     return html;
   },
@@ -108,8 +110,8 @@ var Bookclubs = {
     e.preventDefault();
 
     // set id of bookclub to join
-    var bookclubId = $(e.target).parent().attr('id');
-
+    var bookclubId = $(e.target).parent().parent().attr('id');
+    
     // remove + button after clicking join
     $(e.target).remove();
 
