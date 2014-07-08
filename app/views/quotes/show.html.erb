@@ -3,9 +3,17 @@
 </div>
 
 <div class='quote-comments'>
-	<div id="comments-title">Comments</div>
+	<div id="comments-title">Discussion</div>
 	<% if !logged_in? %>
 		<div id="not-logged-in-comments-message">Please login to add comments</div>
 	<% end %>
 	<%= render partial: "comments/index" %>
+</div>
+
+<div id="comment-success">
+Comment added!
+</div>
+
+<div id="comment-failure">
+Error: comment not added!
 </div>

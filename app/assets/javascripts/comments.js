@@ -3,15 +3,15 @@ var Comment = {
 
 	formHTML: function(quoteId){
 		return "<form class='comment-form' action='/quotes/" + quoteId + "/comments/create' method='post'> " +
-		  "<textarea class='comment-box' name='comment' placeholder='Your comment here' /></textarea><br />" +
-		  "<input name='commit' type='submit' value='Submit Comment' />" +
+		"<textarea class='comment-box' name='comment' placeholder='Your comment here' /></textarea><br />" +
+		"<input name='commit' type='submit' value='Submit Comment' />" +
 		"<input value='Cancel' type='button' class='cancel-comment'/></form>";
 	},
 
 	commentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div class='comment-content'>" + content + "</div>" +
-				"<div>Posted by: " + user + "</div>";
+		"<div class='comment-content'>" + content + "</div>" +
+		"<div>Posted by: " + user + "</div>";
 
 		if (isLoggedIn) {
 			html = html + "<button class='reply-comment'>Reply</button>";
@@ -21,8 +21,8 @@ var Comment = {
 
 	hiddenCommentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div style='display:none' data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div class='comment-content'>" + content + "</div>" +
-				"<div>Posted by: " + user + "</div>";
+		"<div class='comment-content'>" + content + "</div>" +
+		"<div>Posted by: " + user + "</div>";
 		if (isLoggedIn) {
 			html = html + "<button class='reply-comment'>Reply</button>";
 		} 
@@ -31,8 +31,8 @@ var Comment = {
 
 	lastHiddenCommentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div style='display:none' data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div class='comment-content'>" + content + "</div>" +
-				"<div>Posted by: " + user + "</div>";
+		"<div class='comment-content'>" + content + "</div>" +
+		"<div>Posted by: " + user + "</div>";
 		if (isLoggedIn) {
 			html = html + "<button class='reply-comment'>Reply</button>";
 		} 
@@ -41,8 +41,8 @@ var Comment = {
 
 	replyFormHTML: function(commentId){
 		return "<form class='reply-comment-form' action='/quotes/comments/" + commentId + "/create' method='post'> " +
-		  "<textarea class='reply-comment-box' name='reply' placeholder='Your reply here' /></textarea><br />" +
-		  "<input name='commit' type='submit' value='Submit Reply' />" +
+		"<textarea class='reply-comment-box' name='reply' placeholder='Your reply here' /></textarea><br />" +
+		"<input name='commit' type='submit' value='Submit Reply' />" +
 		"<input value='Cancel' type='button' class='cancel-reply'/></form>";
 	},
 
@@ -63,20 +63,24 @@ var Comment = {
 	},
 
 	// let the user briefly know if comment was saved successfully
-	// this needs to be changed later. right now, the success status is prepended to the top of the page
-	displayMessage: function(message) {
+	displayMessage: function(isSuccess) {
 		$("form.comment-form").remove();
 		$("form.reply-comment-form").remove();
+
+		if (isSuccess) {
+			$("#comment-success").show();
+		} else {
+			$("#comment-failure").show();
+		}
+
+		setTimeout(function() {
+		  $("#comment-success, #comment-failure").hide();
+		}, 500);
 		
-		// $("body").prepend("<div class='add-comment-response'>" + message + "</div>");
+},
 
-		// setTimeout(function() {
-		//   $("div.add-comment-response").remove();
-		// }, 1000);
-	},
-
-	appendResponse: function(response) {
-		if (response.isSuccess) {
+appendResponse: function(response) {
+	if (response.isSuccess) {
 			// if direct comment to a quote..., else is a reply to a comment
 			if (!(response.quote_id == null) && response.parent_id == null) {
 				$("div.quote-comments").append(this.commentHTML(response.comment_id, response.comment_content, response.user));
@@ -88,11 +92,9 @@ var Comment = {
 				}
 				parentDiv.append(this.commentHTML(response.comment_id, response.comment_content, response.user));
 			}
-			this.displayMessage("Comment/Reply Saved Successfully");
-		} else {
-			this.displayMessage("Unable to Save Comment/Reply");
 		}
-
+		
+		this.displayMessage(response.isSuccess);
 	},
 
 	// send an ajax request to save the user's comment
