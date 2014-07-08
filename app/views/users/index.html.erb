@@ -18,6 +18,12 @@
 </div>
 
 
+<div class="no-search-results">
+	<% if @search_term && @quotes.empty? %>
+		No quotes matched your search.
+	<% end %>
+</div>
+
 <div class="quotes">
 
 
