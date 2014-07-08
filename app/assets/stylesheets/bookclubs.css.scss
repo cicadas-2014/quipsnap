@@ -73,69 +73,76 @@
 	}
 }
 
-div.bookclub-admin, div.bookclub-non, div.bookclub-belong {
-	box-shadow: 0px 1px 1px $quote-border;
-	border-radius: 5px;
-	margin: 10px 0 0 0;
-	background-color: $quote-background;
-	position: relative;
-	padding: 0.3em;
-	cursor: default;
-	height: 50px;
-
-	p {
-		margin-top: 0;
-		padding-right: 50px;
-	}
-
-	button {
-		position: absolute;
-		right: 2px;
-		top: 20px;
-	}
-}
-
 div.bookclubs {
 	background: #6bb382;
 	float: left;
 }
 
 div.bookclubs-all {
-
 	width: 35%;
-	/*float: left;*/
-	background-color: $quote-background;
+	background-color: transparent;
 	margin: 0 auto;
 
-	ul {
-		text-align: center;
-		list-style-type: none;
-		padding: 0;
-		border-radius: 10px;
-		margin: 0px;
+	.bookclubs {
+		background-color: transparent;
 
-		li {
-			padding: 1em 0;
-			height: 30px;
-			border-bottom: 3px solid $main-background;
+		.bookclub-cover-top {
+			border-radius: 5px 3px 0 5px;
+			border-left: 3px solid $book-color-2;
+			border-right: 15px solid $book-color-1;
+			height: 20px;
+			width: 100%;
+			background-color: $book-color-1;
+		}
 
-			button {
-				border: none;
-				background-color: transparent;
-				padding: 0;
-				margin: 0;
-				width: 100%;
-				height: 100%;
-				cursor: pointer;
-				
-				font-size: 14px;
-			}
+		.bookclub-cover-bottom {
+			border-radius: 5px 0 2px 5px;
+			border-left: 3px solid $book-color-2;
+			border-bottom: 2px solid $book-color-2; 
+			border-right: 15px solid $book-color-1;
+			height: 20px;
+			width: 100%;
+			background-color: $book-color-1;
+		}
 
-			button.bookclub-join {
-				float: right;
-				border: solid 2px black;
+		.bookclub-pages {
+			border-right: 18px solid $book-color-1;
+			height: 60px;
+			background-color: $book-page;
+			width: 95%;
+			margin-left: 5%;
+			background-image: url('/images/page-line.png');
+
+			p {
+				margin: 0 auto;
+				display: block;
+				position: relative;
+				top: 1em;
+				text-align: center;
+				font-size: $bookclub-font;
+				font-weight: 600;
+				width: 90%;
+				color: $book-page-font;
+				background-color: white;
+
+				button {
+					position: absolute;
+					right: 10%;
+					bottom: -9%;
+					height: 55%;
+					width: 20%;
+					border: none;
+					text-align: center;
+					color: white;
+					border-radius: 2px;
+				}
+
+				button:hover {
+					background-color: #66CC9A;
+				}
 			}
 		}
+
 	}
 }
 
@@ -144,7 +151,6 @@ button#btn1 {
 	margin-left: 50px;
 	border: none;
 	padding: 0;
-
 	font-size: 14px;
 }
 
