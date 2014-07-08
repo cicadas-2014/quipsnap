@@ -64,7 +64,7 @@ feature 'Join Bookclubs', :js => true do
     allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit bookclubs_path
-    click_button "+"
+    click_button "JOIN"
     wait_for_ajax_to_finish
     expect(page).to_not have_selector('bookclub-join');
   end
