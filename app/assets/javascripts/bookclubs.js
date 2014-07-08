@@ -110,8 +110,8 @@ var Bookclubs = {
     e.preventDefault();
 
     // set id of bookclub to join
-    var bookclubId = $(e.target).parent().attr('id');
-
+    var bookclubId = $(e.target).parent().parent().attr('id');
+    
     // remove + button after clicking join
     $(e.target).remove();
 
