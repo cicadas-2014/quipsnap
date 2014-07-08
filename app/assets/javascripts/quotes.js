@@ -1,5 +1,3 @@
-
-
 var Quote = {
 	// make quote draggable and droppable to add to bookclub
 	addToBookclub: function(quoteId,bookclubId,bookclubDiv) {
