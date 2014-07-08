@@ -62,7 +62,7 @@ var Bookclubs = {
     var belongTo = "";
 
     if ($.inArray(currentUserId, bookclub.user_ids) == -1) {
-      joinBookclub = "<button class='bookclub-join'>JOIN</button>";
+      joinBookclub = "<button class='bookclub-join'>Join</button>";
       belongTo = "class='bookclub-non'"
     } else {
       belongTo = "class='bookclub-belong'";
