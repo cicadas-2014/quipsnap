@@ -15,7 +15,7 @@ end
 
   # Add quotes for these users
   5.times do |i|
-    user.quotes << Quote.create(content: Faker::Lorem.sentence, 
+    user.quotes << Quote.create(content: Faker::Lorem.sentence(15), 
                                 author_id: Author.find(i+1).id, 
                                 book_id: Book.find(i+1).id,
                                 goodreads_link: "link #{i}"

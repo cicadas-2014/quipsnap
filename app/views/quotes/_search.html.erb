@@ -2,19 +2,14 @@
 
 
 <%= search_form_for @search, url: quote_search_category_path, html: { method: :post } do |f| %>
+  <%= f.search_field :book_title_cont,:placeholder => "Search Quotes by Book, Author, or User" %>
 
+	<select name="search_category">
+		<option value="book_title_cont">BOOK</option>
+		<option value="author_name_cont">AUTHOR</option>
+		<option value="user_goodreads_name_cont">USER</option>
+	</select>
 	
-<select name="search_category">
-	<option value="book_title_cont">Book</option>
-	<option value="author_name_cont">Author</option>
-	<option value="user_goodreads_name_cont">User</option>
-</select>
-
-
-  <%= f.search_field :book_title_cont %>
-
-
   <%= f.submit "", class: "search" %>
 <% end %>
 
-<%= button_to "", home_path, method: :get, class: "clear-search" %>

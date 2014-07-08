@@ -3,6 +3,10 @@
 div.quote-comments {
 	width: 80%;
 	margin: 0 auto;
+
+	#comments-title, #not-logged-in-comments-message {
+		color: $quote-info-color;
+	} 
 }
 
 div.quote-comment {
@@ -10,7 +14,17 @@ div.quote-comment {
 	padding: 5px;
 	border-left: 1px solid lightgrey;
 	border-top: 1px solid lightgrey;
-	background-color: white;
+	background-color: $header-background;
+	font-size: 12px;
+	border-radius: 2px;
+
+	.comment-content {
+		margin: 5px;
+		padding: 10px;
+		background-color: $comment-content-background;
+		font-size: 16px;
+		color: $comment-color;
+	}
 
 	button {
 	    border: none;
@@ -30,6 +44,8 @@ div.quote-comment {
   	}
 }
 
+
+
 button.more-comments {
 	background: url($icon-see-replies) no-repeat center;
     background-size: contain;
@@ -43,6 +59,7 @@ button.less-comments {
 button.reply-comment {
 	background: url($icon-comment) no-repeat center;
     background-size: contain;	
+    color: transparent;
 }
 
 form.comment-form, form.reply-comment-form {

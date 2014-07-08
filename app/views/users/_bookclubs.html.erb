@@ -1,9 +1,13 @@
 <div class="users-bookclubs">
 	<% if @bookclubs %>
-		<p><%= current_user.goodreads_name %>'s Bookclubs</p>
+		<p>My Bookclubs</p>
 		<ul>
 		<% @bookclubs.each do |bookclub| %>
-			<li id="<%=bookclub.id%>"><%= button_tag bookclub.name, id: bookclub.id %></li>
+			<li id="<%=bookclub.id%>" class="a-book">
+        <div class='cover-top'></div>
+          <div class='book-pages'><%= button_tag bookclub.name, id: bookclub.id %></div>
+        <div class='cover-bottom'></div>
+        </li>
 		<% end %>
 		</ul>
 	<% end%>

@@ -10,7 +10,7 @@ var Comment = {
 
 	commentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div>" + content + "</div>" +
+				"<div class='comment-content'>" + content + "</div>" +
 				"<div>Posted by: " + user + "</div>";
 
 		if (isLoggedIn) {
@@ -21,7 +21,7 @@ var Comment = {
 
 	hiddenCommentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div style='display:none' data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div>" + content + "</div>" +
+				"<div class='comment-content'>" + content + "</div>" +
 				"<div>Posted by: " + user + "</div>";
 		if (isLoggedIn) {
 			html = html + "<button class='reply-comment'>Reply</button>";
@@ -31,7 +31,7 @@ var Comment = {
 
 	lastHiddenCommentHTML: function(commentId, content, user, isLoggedIn) {
 		var html = "<div style='display:none' data-comment-id='" + commentId + "' class='quote-comment'>" +
-				"<div>" + content + "</div>" +
+				"<div class='comment-content'>" + content + "</div>" +
 				"<div>Posted by: " + user + "</div>";
 		if (isLoggedIn) {
 			html = html + "<button class='reply-comment'>Reply</button>";
@@ -134,14 +134,14 @@ var Comment = {
 
 $(document).ready(function(){
 	// when user adds a comment
-	$("div.quotes").on("click", "button.add-comment", function(e){
+	$("div.quotes, .show-quote").on("click", "button.add-comment", function(e){
 		e.preventDefault();
 		$("form.comment-form").remove();
 		Comment.displayForm($(e.target).parent().parent(), $(e.target).attr("data-quote-id"));
 	});
 
 	// when user submits a comment
-	$("div.quotes").on("submit", "form.comment-form", function(e){
+	$("div.quotes, .show-quote").on("submit", "form.comment-form", function(e){
 		e.preventDefault();
 		var comment = $(e.target).children("textarea.comment-box").val();
 		var action = $(e.target).attr("action");
@@ -165,7 +165,7 @@ $(document).ready(function(){
 	});
 
 	// user cancels adding a comment or a reply
-	$("div.quotes").on("click", ".cancel-comment", Comment.removeForm.bind(this));
+	$("div.quotes, .show-quote").on("click", ".cancel-comment", Comment.removeForm.bind(this));
 	$("div.quote-comments").on("click", ".cancel-reply", Comment.removeForm.bind(this));
 
 	// from quote show page, user can expand replies for a comment

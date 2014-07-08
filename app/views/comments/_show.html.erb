@@ -1,5 +1,5 @@
 <div data-comment-id='<%= comment.id %>' class='quote-comment'>
-	<div class="content"><%= comment.content %></div>
+	<div class="comment-content"><%= comment.content %></div>
 	<div>Posted by: <%= comment.user.goodreads_name %></div>
 	<% if logged_in? %>
 		<button class='reply-comment'></button>

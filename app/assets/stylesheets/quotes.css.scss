@@ -1,9 +1,14 @@
 @import "style_guide";
 
-/* QUOTE */
+/* QUOTES */
+
+div.show-quote {
+  width: 40%;
+  margin: 0 30%;
+ }
+
 
 div.quote {
-	box-shadow: 0px 1px 1px $quote-border;
   border-radius: 5px;
   margin: 0.8em 0 0 0;
   background-color: $quote-background;
@@ -54,7 +59,7 @@ div.quote a {
 .content {
 	font-size: $content;
 	display: block;
-	width: 99%;
+	max-width: 99%;
 	margin: 0 auto;
 	opacity: 0.8;
 	text-align: center;
@@ -70,6 +75,7 @@ div.quote a {
 	p {
 		display: inline-block;
 		margin-bottom: 0;
+		max-width: 80%
 	}
 }
 
@@ -184,4 +190,29 @@ div.quote-options > * , .show-quote {
 	display: inline-block;
 	border: none;  /* If your icon IS the button */
 	color: transparent;  /* If you don't want the button text to show up */
+}
+
+.ui-droppable {
+ 	// background-color: $users-bookclubs;
+ 	// padding: 0;
+ }
+ .mouse-hover {
+ 	// background-color: $hover-bookclubs;
+ }
+
+ .mouse-drop-true {
+ 	// background-color: $bookclubs-add-quote;
+ }
+
+ .mouse-drop-false {
+ 	// background-color: $bookclubs-fail-quote;
+ }
+
+.ui-draggable-dragging {
+	transform:rotate(3deg);
+	-ms-transform:rotate(3deg); /* IE 9 */
+	-webkit-transform:rotate(3deg); /* Opera, Chrome, and Safari */
+	-moz-transform:rotate(3deg);
+	box-shadow: 3px 3px 1px #438E28;
+	opacity: 0.8;
 }

@@ -91,6 +91,7 @@ var makeDraggable = function() {
 $(document).ready(function(){
 	//quote is a draggable object that reverts back to original position
 	makeDraggable();
-
+	// a quote on /quotes/:id should not be draggable 
+	$(".show-quote").children(".quote").draggable("destroy");
 })
 

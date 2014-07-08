@@ -7,15 +7,23 @@ $header-bottom-border : rgba(0, 134, 60, 1.0);
 $main-font-color : black;
 $filter-link : #4f8178;
 $filter-hover : #71a2b9;
-$users-bookclubs : white;
+$users-bookclubs : transparent;
 $hover-bookclubs : #71a2b9;
 $bookclubs-add-quote : #385c56;
 $bookclubs-fail-quote : #b9717e;
 $quote-info-color : rgba(3, 91, 44, 0.6);
 $logo-color : #413F3F;
 $logo-color-2: #208859;
-$instructions-background : #826bb3;
-$instructions-border : #68558f;
+$comment-content-background: rgba(107, 179, 130, 0.5);
+$comment-color: rgba(3, 91, 44, 1);
+// $instructions-background : #CFFFC7;
+// $instructions-border : white;
+// $instructions-font : black;
+$instructions-font-color : #333333;
+$instructions-font-size : 11px;
+$book-color-1 : rgba(255, 106, 105, 1.0);
+$book-page: white;
+$book-page-font: #4E4D4D;
 
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
@@ -29,11 +37,13 @@ $search-user : 12px;
 $content : 17px;
 $logo-font-size : 48px;
 $logo-font-family : 'Lobster Two', cursive;
+$bookclub-font : 15px;
+$bookclub-my: 20px;
 
 /* Icons*/
 $logo : "/images/logo2.png";
 $icon-bookclubs : "/icons/glyphicons_043_group.png";
-$icon-notebook: "/icons/glyphicons_071_book.png";
+$icon-notebook: "/icons/glyphicons_330_blog.png";
 $icon-public: "/icons/glyphicons_351_book_open.png";
 $icon-signout: "/icons/glyphicons_388_exit.png";
 $icon-search: "/icons/glyphicons_027_search.png";

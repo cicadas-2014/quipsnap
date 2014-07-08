@@ -14,10 +14,20 @@ button {
 }
 
 .qtip-content {
-    font-size:16px;
-    font-family: $global-font;
-    background-color: $instructions-background;
-    color: white;
-    border: 2px solid $instructions-border;
+  font-size: $instructions-font-size;
+  color: $instructions-font-color;
 }
 
+/* BOOKCLUBS BAR */
+
+div.cover-top {
+  
+}
+
+div.cover-bottom {
+
+}
+
+div.book-pages {
+
+}

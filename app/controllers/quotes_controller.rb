@@ -45,7 +45,12 @@ class QuotesController < ApplicationController
   def favorites
     redirect_to home_path if !logged_in?
     @search = Quote.search(params[:q])
-    @favorites = current_user.favorites.order("updated_at DESC")
-    render json: {quotes: @favorites}
+    @quotes = current_user.favorites.order("updated_at DESC")
+    @bookclubs = logged_in? ? current_user.bookclubs : nil
+    if request.xhr?
+      render json: {quotes: @quotes}
+    else
+      render "users/index"
+    end
   end
 end
