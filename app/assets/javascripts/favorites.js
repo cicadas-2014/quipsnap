@@ -50,7 +50,6 @@ var userFavorites = {
 		// if user is on /quotes/:id or /bookclubs, redirect to /quotes/favorites
 		// else, user is on / and we can render favorite quotes via ajax
 		if ((!window.location.pathname.match(/\/bookclubs/)) && (!window.location.pathname.match(/\/quotes\/\d+/))) {
-			console.log("ajax favorites");
 			e.preventDefault();
 			var ajaxRequest = $.ajax({
 				url: "/favorites",

@@ -107,3 +107,27 @@ textarea.comment-box, textarea.reply-comment-box {
 #comments-title {
 	font-size: 2em;
 }
+
+#comment-success, #comment-failure {
+	position: fixed;
+	width: 200px;
+	padding: 15px;
+	display:none;
+	left: 600px;
+	top: 200px;
+	text-align: center;
+	z-index: 10000;
+	border-radius: 10px;	
+	color: white;
+	font-size: 15px;
+	font-family: $global-font;
+
+}
+
+#comment-success {	
+	background-color: $success-background;	
+}
+
+#comment-failure {
+	background-color: $error-background;
+}
