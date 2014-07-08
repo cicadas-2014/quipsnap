@@ -39,7 +39,7 @@ RSpec.describe BookclubsController, :type => :controller do
 
     it "assigns all bookclubs to @bookclubs" do 
       get :all
-      expect(assigns(:bookclubs)).to eq bookclubs
+      expect(assigns(:bookclubs)).to eq Bookclub.order(user_id: :asc)
     end
 
     it "returns JSON-formatted bookclubs" do
