@@ -13,7 +13,7 @@ RSpec.describe Bookclub, :type => :model do
   end
 
   it "is invalid without a description" do
-    expect(build(:bookclub, description:nil)).to have(1).errors_on(:description)
+    expect(build(:bookclub, description: nil)).to have(1).errors_on(:description)
   end
 
   it "cannot have a duplicate name" do
@@ -39,6 +39,14 @@ RSpec.describe Bookclub, :type => :model do
 
   it "has many users" do
     expect(bookclub).to respond_to :users
+  end
+
+  it "is invalid with a bookclub name > 140 characters" do
+    expect(build(:bookclub, name: "*"*141)).to have(1).errors_on(:name)
+  end
+
+  it "is valid with a bookclub name <= 140 characters" do
+    expect(build(:bookclub, name: "*"*rand(1..140))).to be_valid
   end
 
 end
