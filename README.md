@@ -1,6 +1,6 @@
-QuipSpot
+QuoteMunk
 ========
-![Build Status](https://travis-ci.org/cicadas-2014/quipspot.svg?branch=master)
+[![Build Status](https://travis-ci.org/cicadas-2014/quotemunk.svg?branch=master)](https://travis-ci.org/cicadas-2014/quotemunk)
 
 Browse and share favorite quotes from books you read on the Kindle.
 
@@ -16,7 +16,7 @@ Read [here](./contributing.md) on how to contribute to this project
 ## Website: to be filled in
 
 ## Trello
-[Our Trello Board](https://trello.com/b/fJlR6wUl/quipspot)
+[Our Trello Board](https://trello.com/b/fJlR6wUl)
 
 Our project management and organization. We use five boards to track our project:
 * Current: features we are currently working on 
