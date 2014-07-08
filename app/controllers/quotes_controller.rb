@@ -18,7 +18,6 @@ class QuotesController < ApplicationController
     render "users/index"
   end
 
-  # POST /
   def search
     @search = Quote.search(params[:q])
   	@quotes = @search.result.includes(:user).order("created_at DESC")

@@ -28,6 +28,7 @@ class LoggingController < ApplicationController
 		begin
 			@access_token = request_token.get_access_token
 			session.delete(:request_token)
+			session.delete(:request_secret)
 			response = @access_token.get('/api/auth_user')
 			doc = Nokogiri::XML(response.body)
 			user_xml = doc.at_xpath('//user')
@@ -42,6 +43,7 @@ class LoggingController < ApplicationController
 	    redirect_to :home
 	  rescue
 	  	session.delete(:request_token)
+	  	session.delete(:request_secret)
 	  	@not_authorized = true
 	  	redirect_to :home
 	  end		

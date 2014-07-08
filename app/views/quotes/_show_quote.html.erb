@@ -1,13 +1,13 @@
 <div class="quote" id="<%=quote.id%>">
 	<div class="content"><img src='/icons/openingquote.png'/><p><%= quote.content %></p><img src='/icons/closingquote.png'/></div>
-		<div class="quote-info"><%= link_to quote.author.name, quote_search_path(q: {author_name_cont: quote.author.name}), method: :post, class: "search-author" %>
+		<div class="quote-info"><%= link_to quote.author.name, quote_search_path(q: {author_name_cont: quote.author.name}), class: "search-author" %>
 	<% unless quote.book.nil? %>
-		<br/><%= link_to quote.book.title, quote_search_path(q: {book_title_cont: quote.book.title}), method: :post, class: "search-title" %>
+		<br/><%= link_to quote.book.title, quote_search_path(q: {book_title_cont: quote.book.title}), class: "search-title" %>
 	<% end %>
 		</div>
 
 
-	<%= link_to "Created by: " + quote.user.goodreads_name, quote_search_path(q: {user_goodreads_name_cont: quote.user.goodreads_name}), method: :post, class: "search-user" %>
+	<%= link_to "Created by: " + quote.user.goodreads_name, quote_search_path(q: {user_goodreads_name_cont: quote.user.goodreads_name}), class: "search-user" %>
 
 	<div class='quote-options'>
 		<button class="share-quote">Share Quote</button>

@@ -1,7 +1,7 @@
 
 
 
-<%= search_form_for @search, url: quote_search_category_path, html: { method: :post } do |f| %>
+<%= search_form_for @search, url: quote_search_category_path do |f| %>
   <%= f.search_field :book_title_cont,:placeholder => "Search Quotes by Book, Author, or User" %>
 
 	<select name="search_category">
