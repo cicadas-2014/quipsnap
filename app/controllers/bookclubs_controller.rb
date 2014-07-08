@@ -21,7 +21,7 @@ class BookclubsController < ApplicationController
 
   # GET /bookclubs/all
   def all
-    @bookclubs = Bookclub.all
+    @bookclubs = Bookclub.order(user_id: :asc)
     render json: { bookclubs: @bookclubs }.to_json
   end
 

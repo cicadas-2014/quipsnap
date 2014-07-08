@@ -113,7 +113,7 @@ var Bookclubs = {
 
   showNewBookclub: function(data) {
     $("form#new_bookclub").hide();
-    $('.bookclubs').append(this.getBookclubHtml(data.bookclub, this.currentUserId()));
+    $('.bookclubs').prepend(this.getBookclubHtml(data.bookclub, this.currentUserId()));
     this.formFields().reset();
   },
 
