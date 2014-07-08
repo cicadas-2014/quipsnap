@@ -71,7 +71,7 @@ var makeDraggable = function() {
 	});
 
 	//quote can be dropped on bookclub li and will be added to bookclub quotes
-	$("li").droppable({
+	$(".a-book").droppable({
 		hoverClass: "mouse-hover",
 		tolerance: 'pointer',
 		drop:function(event,ui) {
