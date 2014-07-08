@@ -1,7 +1,6 @@
-
 <%= form_for @bookclub do |f| %>
 <%= f.label :name, 'Name' %>
-<%= f.text_area :name %><br />
+<%= f.text_area :name, maxlength: 140 %><br />
 <%= f.label :description, 'Description' %>
 <%= f.text_area :description %><br />
 <%= f.submit "Create", id: "submit" %>
