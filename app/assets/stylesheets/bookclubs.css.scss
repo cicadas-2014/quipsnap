@@ -27,11 +27,17 @@
 		margin: 0px;
 
 
-		li {
-			height: 100px;
-			margin-bottom: 4px;
+		li.mouse-hover .cover-top, li.mouse-hover .cover-bottom {
+
+				background-color: #b24a49;
+				border: none;
+			
+		}
 
 			/* BOOKCLUBS BAR */
+		li {
+
+
 
 			div.cover-top {
 				border-radius: 5px 0 0 5px;
@@ -50,6 +56,7 @@
 				background-color: $book-color-1;
 			}
 
+
 			div.book-pages {
 				border: 1px solid white;
 				height: 60px;
@@ -57,6 +64,7 @@
 				width: 95%;
 				margin-left: 5%;
 				background-image: url('/images/page-line.png');
+				cursor: pointer;
 				button {
 					font-size: $bookclub-font;
 					font-weight: 600;
@@ -67,11 +75,20 @@
 					border: none;
 					border-radius: 1px;
 					color: $book-page-font;
+					cursor: pointer;
 				}
 			}
 		}
+
+		li:hover .cover-top, li:hover .cover-bottom {
+
+				background-color: #b24a49;
+				border: none;
+			
+		}
+			
+		}
 	}
-}
 
 div.bookclubs {
 	background: #6bb382;
@@ -155,37 +172,97 @@ button#btn1 {
 }
 
 form#new_bookclub {
-	float:left;
-	margin-left: 50px;
 	display: none;
+	position: absolute;
+	right: 100px;
+	top: 125px;
 
 	label {
 		display: block;
 		color: white;
 		font-size: 18px;
-		margin-left: 40px;		
+		text-align: left;		
 	}
 
 	#submit, #cancel {
 		background-color: white;
 		margin-top: 10px;
-		
-		font-size: 18px;
+		border-radius: 10px;
+		font-size: 14px;
+		border: none;
+		color: $quote-info-color;
 	}
 
-	input#bookclub_name {
+	#cancel{
+		position: absolute;
+		right: 0;
+	}
 
+	#bookclub_name {
+		width: 200px;
 		height: 22px;
 		border-radius: 6px;
 		margin-bottom: 5px;
-		margin-left: 40px;		
+		resize: none;
 	}
 
-	input#bookclub_description {
-
+	#bookclub_description {
+		width: 200px;
 		height: 66px;
 		border-radius: 6px;
-		margin-left: 40px;		
+		resize: none;
 	}
 }
 
+#btn1 {
+	background: white;
+	border: 1px $quote-info-color solid;
+	color: $quote-info-color;
+	width: 100px;
+	border-radius: 10px;
+	position: absolute;
+	right: 150px;
+	padding: 10px;
+	cursor: pointer;
+	margin: 0;
+
+}
+
+div.success {
+	position: fixed;
+	width: 200px;
+	padding: 15px;
+	display: none;
+	left: 600px;
+	text-align: center;
+	top: 200px;
+	background-color: $success-background;
+	
+	z-index: 10000;
+	border-radius: 10px;
+
+	p {
+		color: white;
+		font-size: 15px;
+		font-family: $global-font;
+	}
+}
+
+div.failure {
+	position: fixed;
+	width: 200px;
+	text-align: center;
+	padding: 15px;
+	left: 600px;
+	display:none;
+	top: 200px;
+	background-color: $error-background;
+	color: white;
+	z-index: 10000;
+	border-radius: 10px;
+	p {
+		color: white;
+		font-size: 15px;
+		font-family: $global-font;
+	}
+}

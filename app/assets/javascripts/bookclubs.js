@@ -74,16 +74,18 @@ var Bookclubs = {
       belongTo = belongTo.replace(/'$/, " bookclub-admin'");
     }
 
-    var html =  "<div id='" +
+    var html =  "<a id='" +
                 bookclub.id.toString() +
-                "'" +
+                "' href='/bookclubs/" +
+                bookclub.id.toString() +
+                "' " + 
                 belongTo + 
                 "><div class='bookclub-cover-top'></div><div class='bookclub-pages'><p>" +
                 bookclub.name +
                 ": " +
                 bookclub.description +
                 joinBookclub +
-                "</p></div><div class='bookclub-cover-bottom'></div></div>";  
+                "</p></div><div class='bookclub-cover-bottom'></div></a>";  
 
     return html;
   },

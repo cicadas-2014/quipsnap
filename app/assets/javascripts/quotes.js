@@ -8,19 +8,21 @@ var Quote = {
 
 
 		ajaxRequest.done(function(response){
-			console.log(response);
 			if (response.quote_added == false) {
 				bookclubDiv.addClass("mouse-drop-false");
 				bookclubDiv.removeClass("mouse-drop-false",1000)
+				$("div.failure").fadeIn(300);
+				$("div.failure").fadeOut(1600);
 			}
 			else {
 				bookclubDiv.addClass("mouse-drop-true");
 				bookclubDiv.removeClass("mouse-drop-true",1000);
+				$("div.success").fadeIn(300);
+				$("div.success").fadeOut(1800);
 			}
 		});
 
 		ajaxRequest.fail(function(response){
-			console.log(response);
 		})
 	},
 
@@ -30,7 +32,6 @@ var Quote = {
 			var top = ui.draggable.data('orgTop');
 			var left = ui.draggable.data('orgLeft');
 			ui.position = { top: top, left: left };
-			console.log(ui.position);
 		});
 	}
 

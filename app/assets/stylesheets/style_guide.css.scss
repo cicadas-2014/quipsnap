@@ -25,6 +25,8 @@ $book-color-1 : rgba(255, 106, 105, 1.0);
 $book-color-2 : rgba(226, 83, 83, 1.0);
 $book-page: white;
 $book-page-font: #4E4D4D;
+$error-background: #df4856;
+$success-background: #87c79c;
 
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
@@ -43,13 +45,14 @@ $bookclub-my: 20px;
 
 /* Icons*/
 $logo : "/images/logo2.png";
-$icon-bookclubs : "/icons/glyphicons_043_group.png";
+$icon-bookclubs : "/icons/glyphicons_319_sort.png";
 $icon-notebook: "/icons/glyphicons_330_blog.png";
-$icon-public: "/icons/glyphicons_351_book_open.png";
+$icon-public: "/icons/glyphicons_043_group.png";
 $icon-signout: "/icons/glyphicons_388_exit.png";
 $icon-search: "/icons/glyphicons_027_search.png";
 $icon-clear-search: "/icons/glyphicons_197_remove.png";
 $icon-signin: "/icons/goodreads-login-button.png";
+$icon-favorites: "/icons/glyphicons_grey_star.png";
 
 $icon-show-quote: "/icons/glyphicons_187_more.png";
 $icon-share-quote: "/icons/glyphicons_050_link.png";
