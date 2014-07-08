@@ -9,7 +9,7 @@ header {
   background-color: $header-background;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   padding: 3px;
   border-bottom: 1px $quote-info-color solid;
 }

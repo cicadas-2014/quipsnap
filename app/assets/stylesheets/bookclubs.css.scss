@@ -139,26 +139,98 @@ div.bookclubs-all {
 				width: 90%;
 				color: $book-page-font;
 				background-color: white;
+				z-index: 1;
+			}
 
-				button {
-					position: absolute;
-					right: 10%;
-					bottom: -9%;
-					height: 55%;
-					width: 20%;
-					border: none;
-					text-align: center;
-					color: white;
-					border-radius: 2px;
+			/* JOIN BOOKCLUB */
+
+			.controller-wrapper {
+				z-index: 2;
+		    position: relative;
+		    left: 23em;
+
+				.bookclub-join {
+					z-index: 2;
+		      position: absolute;
+		      width: 80px;
+		      margin: 0;
+		      height: 20px;
+		      font-size: 13px;
+		      border-radius: 3px;
+		      background-color: #AEF5AF;
+		      display: block;
+		      color: #696B69;
+		      text-align: center;
+		      border: 1px solid #AEF5AF;
+		      outline: none;
 				}
 
-				button:hover {
-					background-color: #66CC9A;
+				.bookclub-join:hover {
+					background-color: #696B69;
+					color: #AEF5AF;
+					border-color: #696B69;
 				}
+
+				.admin-page {
+					z-index: 2;
+		      position: absolute;
+		      width: 80px;
+		      margin: 0;
+		      height: 20px;
+		      font-size: 13px;
+		      border-radius: 3px;
+		      background-color: #7B93DB;
+		      display: block;
+		      color: white;
+		      text-align: center;
+		      border: 1px solid #7B93DB;
+		      outline: none;		
+
+		      a {
+		      	color: white;
+		      	font-weight: 600;
+		      }			
+
+				}
+
+				.admin-page:hover > a , .admin-page:hover{
+					background-color: white;
+					color: #7B93DB;
+					border-color: white;
+				}
+
+				.admin-options {
+
+					.delete-bookclub {
+						z-index: 2;
+			      position: absolute;
+			      left: 5em;
+			      top: 1em;
+			      width: 80px;
+			      margin: 0;
+			      height: 20px;
+			      font-size: 13px;
+			      border-radius: 3px;
+			      background-color: #F05D5D;
+			      display: block;
+			      color: white;
+			      text-align: center;
+			      border: 2px solid #F05D5D;
+			      outline: none;	
+			      font-weight: 600;
+					}
+
+					.delete-bookclub:hover {
+						color: #F05D5D;
+						background-color: white;
+						border: 2px solid #F05D5D;
+					}
+
+				}				
 			}
 		}
+	}	
 
-	}
 }
 
 button#btn1 {

@@ -64,6 +64,12 @@ class BookclubsController < ApplicationController
     render json: { bookclub_id: bookclub.id }.to_json
   end
 
+  def delete
+    bookclub = Bookclub.find(params[:id])
+    bookclub.destroy
+    render json: {done: "Deleted bookclub!"}
+  end
+
   private
 
   def bookclub_params
