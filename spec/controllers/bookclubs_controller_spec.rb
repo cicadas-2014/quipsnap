@@ -37,14 +37,9 @@ RSpec.describe BookclubsController, :type => :controller do
 
     let(:bookclubs) { Bookclub.all }
 
-    it "assigns all bookclubs to @bookclubs" do 
-      get :all
-      expect(assigns(:bookclubs)).to eq bookclubs
-    end
-
     it "returns JSON-formatted bookclubs" do
       get :all
-      expect(response.body).to have_content bookclubs.to_json
+      expect(response.body).to have_content "You are being redirected"
     end
   end
 

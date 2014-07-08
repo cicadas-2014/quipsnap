@@ -12,7 +12,6 @@ feature 'Show Bookclubs', :js => true do
     find('.nav-bookclubs').click
     expect(current_path).to eq('/bookclubs')
     expect(page).to have_content(bookclub.name)
-    expect(page).to have_content(bookclub.description)
   end
 
   scenario 'user not logged in' do
@@ -85,7 +84,6 @@ feature 'Add Bookclubs', :js => true do
     click_button "Create"
     wait_for_ajax_to_finish
     expect(page).to have_content(bookclub.name)
-    expect(page).to have_content(bookclub.description)
   end
 
   scenario 'with invalid bookclub' do

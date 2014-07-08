@@ -21,8 +21,12 @@ class BookclubsController < ApplicationController
 
   # GET /bookclubs/all
   def all
-    @bookclubs = Bookclub.all
-    render json: { bookclubs: @bookclubs }.to_json
+    if request.xhr?
+      @bookclubs = Bookclub.all
+      render json: { bookclubs: @bookclubs }.to_json
+    else
+      redirect_to home_path
+    end
   end
 
   # POST /bookclubs/:bookclub_id/quotes/:quote_id
