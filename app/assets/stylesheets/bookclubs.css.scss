@@ -6,7 +6,8 @@
 	background-color: $users-bookclubs;	
 
 	p {
-		margin-bottom: 0px;
+		margin-bottom: 5px;
+		margin-top: 5px;
 		padding-bottom: 5px;
 		text-align: center;
 		border-bottom: 3px solid $main-background;
@@ -25,12 +26,13 @@
 
 		li {
 			height: 100px;
-			border-bottom: 10px solid $main-background;
+			margin-bottom: 4px;
 
 			/* BOOKCLUBS BAR */
 
 			div.cover-top {
 				border-radius: 5px 0 0 5px;
+				border-left: 3px solid $book-color-2;
 			  height: 20px;
 			  width: 100%;
 			  background-color: $book-color-1;
@@ -38,12 +40,15 @@
 
 			div.cover-bottom {
 				border-radius: 5px 0 0 5px;
+				border-left: 3px solid $book-color-2;
+				border-bottom: 2px solid $book-color-2; 
 				height: 20px;
 				width: 100%;
 			  background-color: $book-color-1;
 			}
 
 			div.book-pages {
+				border: 1px solid white;
 				height: 60px;
 				background-color: $book-page;
 				width: 95%;
@@ -152,26 +157,3 @@ form#new_bookclub {
 
 
 
-.ui-droppable {
- 	background-color: $users-bookclubs;
- 	padding: 0;
- }
- .mouse-hover {
- 	background-color: $hover-bookclubs;
- }
-
- .mouse-drop-true {
- 	background-color: $bookclubs-add-quote;
- }
-
- .mouse-drop-false {
- 	background-color: $bookclubs-fail-quote;
- }
-
-.ui-draggable-dragging {
-	transform:rotate(3deg);
-	-ms-transform:rotate(3deg); /* IE 9 */
-	-webkit-transform:rotate(3deg); /* Opera, Chrome, and Safari */
-	-moz-transform:rotate(3deg);
-	box-shadow: 50px 50px 10px black;
-}
