@@ -12,10 +12,14 @@ var Quote = {
 			if (response.quote_added == false) {
 				bookclubDiv.addClass("mouse-drop-false");
 				bookclubDiv.removeClass("mouse-drop-false",1000)
+				$("div.failure").fadeIn(300);
+				$("div.failure").fadeOut(1600);
 			}
 			else {
 				bookclubDiv.addClass("mouse-drop-true");
 				bookclubDiv.removeClass("mouse-drop-true",1000);
+				$("div.success").fadeIn(300);
+				$("div.success").fadeOut(1800);
 			}
 		});
 
@@ -69,7 +73,7 @@ var makeDraggable = function() {
 	});
 
 	//quote can be dropped on bookclub li and will be added to bookclub quotes
-	$(".a-book").droppable({
+	$("li").droppable({
 		hoverClass: "mouse-hover",
 		tolerance: 'pointer',
 		drop:function(event,ui) {
