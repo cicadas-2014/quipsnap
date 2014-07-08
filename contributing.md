@@ -1,6 +1,6 @@
 If you'd like to contribute to this project, please follow the steps below:
 
-- Fork the repo (https://github.com/cicadas-2014/quipsnap.git)
+- Fork the repo (https://github.com/cicadas-2014/quotemunk.git)
 
 - Git clone your forked repo to your local
 
