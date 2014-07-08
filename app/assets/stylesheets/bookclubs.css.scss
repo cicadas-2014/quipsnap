@@ -6,14 +6,17 @@
 	background-color: $users-bookclubs;	
 
 	p {
-		margin-bottom: 5px;
+		margin-bottom: 7px;
 		margin-top: 5px;
+		margin-left: 5%;
+		width: 95%;
 		padding-bottom: 5px;
 		text-align: center;
 		border-bottom: 3px solid $main-background;
 		color: white;
 		font-weight: 800;
 		font-size: $bookclub-my;
+		display: block;
 	}
 
 	ul {
