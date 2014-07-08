@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 	get '/quotes/:id' => "quotes#show", as: "quote"
 	get '/search' => "quotes#search", as: "quote_search"
-	get '/category' => "quotes#search_by_category", as: "quote_search_category"
+	get '/search/category' => "quotes#search_by_category", as: "quote_search_category"
 
 	get '/favorites' => "quotes#favorites", as: "favorites"
 	post '/quotes/:id/favorite' => "quotes#favorite"
