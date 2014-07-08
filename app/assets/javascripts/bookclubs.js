@@ -39,19 +39,16 @@ var Bookclubs = {
     $("form#new_bookclub").hide(500);
   },
 
-  // Prepare bookclubs list HTML
-  bookclubsHtml: "<div class='bookclubs'>",
-
   // Return html for all bookclubs
   showBookclubListHtml: function(data) {
     var bookclubs = data.bookclubs;
+    var bookclubsHtml = '';
     for(var i = 0; i < bookclubs.length; i++) {
       var bookclub = bookclubs[i];
-      this.bookclubsHtml += this.getBookclubHtml(bookclub, this.currentUserId());
+      bookclubsHtml += this.getBookclubHtml(bookclub, this.currentUserId());
     }
 
-    this.bookclubsHtml += "</div>";
-    $('.bookclubs-all').prepend(this.bookclubsHtml);
+    $('.bookclubs').prepend(bookclubsHtml);
   },
 
   // Return html for one bookclub
