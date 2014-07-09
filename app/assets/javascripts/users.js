@@ -188,9 +188,9 @@ var Users = {
   },
 
   showBookclubQuotes: function(response) {
+    $(".page-info").html("Bookclub: " + response.name+"<div class='page-info-bc-desc'>" + response.desc + "</div>");
 
     var quoteHTML = "";
-
     var quotes = response.quotes;
     var favs = response.is_favorites;
 
