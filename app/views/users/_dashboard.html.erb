@@ -11,10 +11,10 @@
 		<div></div>
 		<nav>
 			<a href='/' class="username"><p><%=current_user.goodreads_name%></p></a>
-			<%= button_to "", bookclubs_path, method: :get, class: "nav-bookclubs" %>
 			<%= button_to "", home_path, method: :get, class: "nav-notebook" %>
-			<%= button_to "", quote_search_path, method: :get, class: "nav-public" %>
 			<%= button_to "", favorites_path, method: :get, class: "nav-favorites" %>
+			<%= button_to "", quote_search_path, method: :get, class: "nav-public" %>
+			<%= button_to "", bookclubs_path, method: :get, class: "nav-bookclubs" %>
 			<%= button_to "", "/sign_out", method: :get, class: "nav-signout", title: "Signout" %>
 		</nav>
 	<% else %>
