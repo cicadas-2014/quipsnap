@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include ApplicationHelper
+
   # ROOT
   def index
   	@search = logged_in? ? Quote.where(user_id: current_user.id).search(params[:q]) : Quote.search(params[:q])
@@ -13,4 +15,14 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def welcome
+    @search = logged_in? ? Quote.where(user_id: current_user.id).search(params[:q]) : Quote.search(params[:q])
+    @quotes = @search.result.includes(:user).order("created_at DESC")
+  end
+
+  def retrieve_quotes
+    get_quotes(current_user)
+  end
+
 end

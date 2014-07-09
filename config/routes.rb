@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
 	root :to => "users#index", as: "home"
 
+	get '/welcome' => "users#welcome", as: "welcome"
+
+	get '/retrieve_quotes' => "users#retrieve_quotes"
+
 	get '/sign_in' => "logging#sign_in"
 	get '/sign_out' => "logging#sign_out"
 	get '/auth' => "logging#auth" 
