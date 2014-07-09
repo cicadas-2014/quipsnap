@@ -51,6 +51,7 @@ var userFavorites = {
 		// else, user is on / and we can render favorite quotes via ajax
 		if ((!window.location.pathname.match(/\/bookclubs/)) && (!window.location.pathname.match(/\/quotes\/\d+/))) {
 			e.preventDefault();
+			$('.pagination').hide();
 			var ajaxRequest = $.ajax({
 				url: "/favorites",
 				type: "get"
