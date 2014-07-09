@@ -101,5 +101,17 @@ RSpec.describe BookclubsController, :type => :controller do
 
   end
 
+  describe "DELETE #delete" do
+
+    let!(:bookclub) { create(:bookclub) }
+
+    it "expects bookclub count to decrease by 1" do
+      expect {
+        delete :delete, id: bookclub.id
+      }.to change(Bookclub.all, :count).by(-1)
+    end 
+
+  end
+
 
 end
