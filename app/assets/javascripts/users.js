@@ -172,7 +172,7 @@ var Users = {
 
       html = html + "</div><a class='search-user' data-method='get'" + 
         "href='/search?q%5Buser_goodreads_name_cont%5D="+ encodeURI(quote.user_name) + 
-        "' rel='nofollow'>Created by: " + quote.user_name + "</a>" + 
+        "' rel='nofollow'>Shared by: " + quote.user_name + "</a>" + 
         "<div class='quote-options'>" + 
         "<button class='share-quote'>Share Quote</button>";
 

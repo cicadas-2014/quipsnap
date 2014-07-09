@@ -8,7 +8,7 @@
 	</div>
 
 
-	<%= link_to "Created by: " + quote.user.goodreads_name, quote_search_path(q: {user_goodreads_name_cont: quote.user.goodreads_name}), class: "search-user" %>
+	<%= link_to "Shared by: " + quote.user.goodreads_name, quote_search_path(q: {user_goodreads_name_cont: quote.user.goodreads_name}), class: "search-user" %>
 
 	<div class='quote-options'>
 		<button class="share-quote">Share Quote</button>
