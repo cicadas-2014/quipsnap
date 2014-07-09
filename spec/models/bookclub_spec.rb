@@ -41,12 +41,12 @@ RSpec.describe Bookclub, :type => :model do
     expect(bookclub).to respond_to :users
   end
 
-  it "is invalid with a bookclub name > 140 characters" do
-    expect(build(:bookclub, name: "*"*141)).to have(1).errors_on(:name)
+  it "is invalid with a bookclub name > 60 characters" do
+    expect(build(:bookclub, name: "*"*61)).to have(1).errors_on(:name)
   end
 
-  it "is valid with a bookclub name <= 140 characters" do
-    expect(build(:bookclub, name: "*"*rand(1..140))).to be_valid
+  it "is valid with a bookclub name <= 60 characters" do
+    expect(build(:bookclub, name: "*"*rand(1..60))).to be_valid
   end
 
 end
