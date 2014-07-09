@@ -4,8 +4,6 @@ class PullQuotesFromGoodreads
 
   def perform
     User.all.each { |user| get_quotes(user) }
-    # twitter_client
-    # create_quotes_from_twitter("judyjow")
   end
 
 end

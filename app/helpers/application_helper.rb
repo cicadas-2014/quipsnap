@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 require 'goodreads'
-require 'twitter'
 module ApplicationHelper
   # need to fill this in. represents a logged in user, so we can make API calls on their behalf
   def goodreads_client
@@ -52,42 +51,7 @@ module ApplicationHelper
 
 
 
-  # def twitter_client
-  #     @twitter_client = Twitter::REST::Client.new do |config|
-  #       config.consumer_key = ENV['TWITTER_KEY']
-  #       config.consumer_secret = ENV['TWITTER_SECRET']
-  #     end
-  # end
-
-  # def create_quotes_from_twitter(twitter_handle)
-  #   tweet_links = []
-  #   @twitter_client.user_timeline(twitter_handle).each do |tweet|
-  #     if tweet.source.include?("kindle.amazon.com")
-  #       p tweet_links << tweet.text.scan(/(http:\/\/t.co\/)([a-zA-Z]{10})/).first.join("")
-  #     end
-  #   end
-
-  #   tweet_links.each do |link|
-  #     page = Nokogiri::HTML(open(link))
-  #     content = page.css('h1.quoteText').children.text
-  #       if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
-  #         content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
-  #       end
-  #     content.gsub!("â","'") if content.include?("â")
-  #     author = page.css('div.quoteText a').children.first.text
-  #     p book = page.css('div.quoteText i a').children.text
-
-  #     @author = Author.find_or_create_by(name: author)
-  #     @book = Book.find_or_create_by(title: book)
-    
-  #     Quote.create( content: content,
-  #                   author: @author,
-  #                   goodreads_link: link,
-  #                   user_id: 3,
-  #                   book: @book)
-
-  #   end
-  # end
+  
 
 
 end
