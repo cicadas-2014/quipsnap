@@ -13,6 +13,7 @@ var ShareQuotes = {
     var quoteId = $(e.target).closest('.quote').attr('id');
     var hostName = 'http://' + window.location.hostname;
     var localhost = '';
+    // so the URL succeeds for testing and development 
     if ( hostName.match(/localhost/) ) {
       localhost = ':3000';
     }
