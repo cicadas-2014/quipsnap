@@ -77,7 +77,7 @@ class LoggingController < ApplicationController
 			@user = User.find_by(	goodreads_name: twitter_handle)
 			if @user
 				session[:user_id] = @user.id
-				redirect_to :welcome
+				redirect_to :home
 			else
 				@user = User.create( goodreads_name: twitter_handle,
 					goodreads_user_id: @access_token.params[:user_id], 
@@ -85,7 +85,7 @@ class LoggingController < ApplicationController
 					auth_secret: @access_token.secret,
 					is_twitter: true)
 				session[:user_id] = @user.id
-				redirect_to home_path
+				redirect_to :welcome
 			end
 		rescue
 			session.delete(:request_token)
