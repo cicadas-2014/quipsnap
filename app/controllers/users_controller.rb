@@ -37,7 +37,11 @@ class UsersController < ApplicationController
   end
 
   def retrieve_quotes
-    get_quotes(current_user)
+    if current_user.is_twitter 
+      create_quotes_from_twitter(current_user)
+    else
+      get_quotes(current_user)
+    end
   end
 
 end
