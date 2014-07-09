@@ -80,12 +80,8 @@ var Bookclubs = {
                 belongTo + 
                 "><div class='bookclub-cover-top'></div><div class='bookclub-pages'><p>" +
                 bookclub.name +
-                ": " +
-                bookclub.description +
                 controller +
-                "</div>" +
-                "</p></div><div class='bookclub-cover-bottom'></div></a>";  
-
+                "</div></p></div><div class='bookclub-cover-bottom'></div></a>";  
     return html;
   },
 

@@ -4,7 +4,7 @@
 
  div.quotes {
   width: 40%;
-  margin: 6em 20% 0 20%;
+  margin: 2em 20% 0 20%;
 
   /* SHARE LINK */
 
@@ -28,8 +28,24 @@
       border: 1px solid rgba(230, 230, 230, 1.0);
       outline: none;
     }
-  } 
+  }
+
  }
+
+.page-info {
+  margin: 5px;
+  text-align: center;
+  color: white;
+  font-weight: 800;
+  font-size: $bookclub-my;
+  display: block;
+
+  .page-info-bc-desc {
+    color: white;
+    font-style: italic;
+    font-size: 0.7em;
+  }
+}
 
 
 button {

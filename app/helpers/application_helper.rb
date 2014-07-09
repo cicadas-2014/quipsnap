@@ -50,7 +50,9 @@ module ApplicationHelper
                   author: @author, book: @book)
   end
 
+  def current_page?() 
 
+  end
 
   # def twitter_client
   #     @twitter_client = Twitter::REST::Client.new do |config|
