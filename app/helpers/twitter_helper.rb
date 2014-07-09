@@ -47,22 +47,23 @@ module TwitterHelper
     	@page = open(link, :allow_redirections => :safe)
       doc = Nokogiri::HTML.parse(@page)
       content = @coder.decode(doc.css('h1.quoteText').children.text)
-    	author = page.css('div.quoteText a').children.first.text
-      book = page.css('div.quoteText i a').children.text
+    	author = doc.css('div.quoteText a').children.first.text.tr(%q{"'}, '')
+      book = doc.css('div.quoteText i a').children.text
 
 
       @author = Author.find_or_create_by(name: author)
       @book = Book.find_or_create_by(title: book)
     
+      if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
+        content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
+      end
+      
       Quote.create( content: content,
                     author: @author,
                     goodreads_link: link,
                     user_id: user.id,
                     book: @book)
 
-      # if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
-      #   content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
-      # end
 
     end
 
@@ -73,15 +74,14 @@ module TwitterHelper
     
 
 
-      # if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
-      #   content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
-      # end
+      if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
+        content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
+      end
 
 
 
       book = doc.css("script")[1].to_s.scan(/(?<=title":")(.*)(?=","title)/)[0][0]
-      author = doc.css("script")[1].to_s.scan(/(?<=authors":\[)(.*)(?=\],"content)/)[0][0]
-
+      author = doc.css("script")[1].to_s.scan(/(?<=authors":\[)(.*)(?=\],"content)/)[0][0].tr(%q{"'}, '')
       @author = Author.find_or_create_by(name: author)
       @book = Book.find_or_create_by(title: book)
     
