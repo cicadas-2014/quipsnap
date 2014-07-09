@@ -3,8 +3,13 @@
 .users-bookclubs {
 	width: 20%;
 	float: right;
-	background-color: $users-bookclubs;	
-
+	background-color: $users-bookclubs;
+	color: white;	
+	
+	a {
+		color: $quote-info-color;
+		font-weight: bolder;
+	}
 	p {
 		margin-bottom: 7px;
 		margin-left: 5%;
