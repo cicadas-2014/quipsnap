@@ -10,10 +10,25 @@ class UsersController < ApplicationController
     if @quotes
       @quotes=@quotes.paginate(page: params[:page], per_page: 5)
     end
+
     # respond_to do |format|
-    #   format.html
-    #   format.js
+    #   format.html { 
+    #     if logged_in?
+    #       render :index
+    #     end
+    #   }
+    #   format.js {
+    #     if !logged_in?
+    #       render js: :index
+    #     end
+    #   }
     # end
+
+
+    respond_to do |format| 
+      format.html {render :index if logged_in?}
+      format.js
+    end
   end
 
   def welcome
@@ -22,7 +37,11 @@ class UsersController < ApplicationController
   end
 
   def retrieve_quotes
-    get_quotes(current_user)
+    if current_user.is_twitter 
+      create_quotes_from_twitter(current_user)
+    else
+      get_quotes(current_user)
+    end
   end
 
 end
