@@ -64,11 +64,23 @@ var userFavorites = {
 
 	renderFavorites: function(response) {
 		$(".quotes").html("");	
+
+		$(".page-info").html("My Favorites");
+
+		this.displayEmptyMessage(response.quotes);
+		
 		for (var i = 0; i < response.quotes.length; i++) {
 			var html = this.getQuoteHtml(response.quotes[i]);
 			$(".quotes").append(html);
 		}
 		makeDraggable();
+	},
+
+	displayEmptyMessage: function(quotes) {
+		$(".no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes").html("");
+		if (quotes.length == 0) {
+			$(".no-favorites").html("You currently have no favorited quotes.");
+		}
 	},
 
 	getQuoteHtml: function(quote) {

@@ -4,19 +4,19 @@
 
 header {
   width: 100%;
-  height: 50px;
+  height: 57px;
   margin: 0;
   background-color: $header-background;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   padding: 3px;
   border-bottom: 1px $quote-info-color solid;
 }
 
 /* LOGO */
 
-div.logo {
+.logo {
   display: inline-block;
   margin-left: 1.6em;
 
@@ -87,7 +87,6 @@ header form {
 }
 
 select {
-  -webkit-appearance: none;
   font: 10px $global-font;
   padding: 2px;
   text-align: center;
@@ -143,9 +142,9 @@ select {
 
 .username {
   position: absolute;
-  top: 2px;
   right: 235px;
   width: 280px;
+  text-align: right;
 
   p {
     margin: 0px;

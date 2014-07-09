@@ -39,6 +39,8 @@ gem 'open_uri_redirections'
 gem 'htmlentities'
 gem 'httpclient'
 
+gem 'will_paginate', '~> 3.0.5'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

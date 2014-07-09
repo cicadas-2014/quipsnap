@@ -8,19 +8,20 @@ class QuotesController < ApplicationController
   end
 
   def search_by_category
-    if params[:q]
-     @search = Quote.search(params[:search_category] => params[:q][:book_title_cont])
-    else
-      @search = Quote.search(params[:q])
-    end
-    @quotes = @search.result.includes(:user).order("created_at DESC")
+    p params
+    @search = Quote.search(params[:search_category] => params[:q][:book_title_cont])
+    @search_term = convert_category_search
+
+    @quotes = @search.result.includes(:user).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = logged_in? ? current_user.bookclubs : nil
     render "users/index"
   end
 
   def search
     @search = Quote.search(params[:q])
-  	@quotes = @search.result.includes(:user).order("created_at DESC")
+    @search_term = convert_search
+
+  	@quotes = @search.result.includes(:user).order("created_at DESC").paginate(page: params[:page], per_page: 5)
   	@bookclubs = logged_in? ? current_user.bookclubs : nil
   	render "users/index"
   end
@@ -44,12 +45,48 @@ class QuotesController < ApplicationController
   def favorites
     redirect_to home_path and return unless logged_in?
     @search = Quote.search(params[:q])
-    @quotes = current_user.favorites.order("updated_at DESC")
+    @quotes = current_user.favorites.order("updated_at DESC").paginate(page: params[:page], per_page: 5)
     @bookclubs = logged_in? ? current_user.bookclubs : nil
+    @favorite = true
     if request.xhr?
       render json: {quotes: @quotes}
     else
       render "users/index"
     end
   end
+
+  private
+
+  def convert_search
+
+    conversion = {
+      "book_title_cont" => "book titles",
+      "author_name_cont" => "authors",
+      "user_goodreads_name_cont" => "users"
+    }
+
+    if params[:q]
+      return "Results for: #{conversion[params[:q].keys[0]]} '#{params[:q].values[0]}'"
+    else
+      return "Public Quotes"
+    end
+
+  end
+
+  def convert_category_search
+    
+    conversion = {
+      "book_title_cont" => "book titles",
+      "author_name_cont" => "authors",
+      "user_goodreads_name_cont" => "users"
+    }
+
+    if params[:q][:book_title_cont] != ""
+      return "Results for: #{conversion[params[:search_category]]} '#{params[:q][:book_title_cont]}'"
+    else
+      return "Public Quotes"
+    end
+
+  end
+
 end

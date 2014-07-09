@@ -10,6 +10,8 @@ var Bookclubs = {
     $('.bookclubs-all').on('click', 'button.bookclub-join', this.sendJoinRequest.bind(this));
     $('#btn1').on('click', this.displayNewBookclubForm.bind(this));
     $('input#cancel').on('click', this.hideNewBookclubForm.bind(this));
+    $('.bookclubs-all').on('click', '.admin-page', this.showAdminOptions.bind(this));
+    $('.bookclubs-all').on('click', '.delete-bookclub', this.deleteBookclub.bind(this));
   },
 
   init: function() {
@@ -37,32 +39,27 @@ var Bookclubs = {
     $("form#new_bookclub").hide(500);
   },
 
-  // Prepare bookclubs list HTML
-  bookclubsHtml: "<div class='bookclubs'>",
-
   // Return html for all bookclubs
   showBookclubListHtml: function(data) {
     var bookclubs = data.bookclubs;
+    var bookclubsHtml = '';
     for(var i = 0; i < bookclubs.length; i++) {
       var bookclub = bookclubs[i];
-      this.bookclubsHtml += this.getBookclubHtml(bookclub, this.currentUserId());
+      bookclubsHtml += this.getBookclubHtml(bookclub, this.currentUserId());
     }
 
-    this.bookclubsHtml += "</div>";
-
-    $('.bookclubs-all').prepend(this.bookclubsHtml);
-
+    $('.bookclubs').prepend(bookclubsHtml);
   },
 
   // Return html for one bookclub
   getBookclubHtml: function(bookclub, currentUserId) {
     // If current user is not in the bookclub,
     // add a + so that the user can join the bookclub
-    var joinBookclub = "";
+    var controller = "<div class='controller-wrapper'>";
     var belongTo = "";
 
     if ($.inArray(currentUserId, bookclub.user_ids) == -1) {
-      joinBookclub = "<button class='bookclub-join'>Join</button>";
+      controller += "<button class='bookclub-join'>Join</button>";
       belongTo = "class='bookclub-non'"
     } else {
       belongTo = "class='bookclub-belong'";
@@ -72,6 +69,7 @@ var Bookclubs = {
     // add a bookclub-admin class to the li
     if (currentUserId == bookclub.admin_id) {
       belongTo = belongTo.replace(/'$/, " bookclub-admin'");
+      controller += "<button class='admin-page'>Admin page</button>";
     }
 
     var html =  "<a id='" +
@@ -82,11 +80,8 @@ var Bookclubs = {
                 belongTo + 
                 "><div class='bookclub-cover-top'></div><div class='bookclub-pages'><p>" +
                 bookclub.name +
-                ": " +
-                bookclub.description +
-                joinBookclub +
-                "</p></div><div class='bookclub-cover-bottom'></div></a>";  
-
+                controller +
+                "</div></p></div><div class='bookclub-cover-bottom'></div></a>";  
     return html;
   },
 
@@ -111,7 +106,7 @@ var Bookclubs = {
 
   showNewBookclub: function(data) {
     $("form#new_bookclub").hide();
-    $('.bookclubs').append(this.getBookclubHtml(data.bookclub, this.currentUserId()));
+    $('.bookclubs').prepend(this.getBookclubHtml(data.bookclub, this.currentUserId()));
     this.formFields().reset();
   },
 
@@ -141,6 +136,31 @@ var Bookclubs = {
   // data.bookclub_id can be used to access the li of the bookclub by id.
   showJoinBookclub: function(data) {
     $('li#' + data.bookclub_id.toString()).addClass('bookclub-belong');
+  },
+
+  // admin options currently only has delete command to remove bookclub
+  showAdminOptions: function(e) {
+    e.preventDefault();
+
+    var html =  "<div class='admin-options'>" +
+                "<button class='delete-bookclub'>Delete bookclub</button>" +
+                "</div>";
+
+    $(e.target).closest('.controller-wrapper').append(html);
+    $(e.target).closest('.admin-page').remove();
+  },
+
+  deleteBookclub: function(e) {
+    e.preventDefault();
+
+    var clubId = $(e.target).closest('a').attr('id');
+    $(e.target).closest('a').remove();
+
+    $.ajax({
+      url: '/bookclubs/' + clubId.toString() + '/delete',
+      type: 'DELETE'
+    }).done(function(response) {});
+
   }
 
 };

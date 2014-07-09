@@ -1,5 +1,5 @@
 <!-- On the far left, our logo -->
-<div class="logo"><span>qu</span><img src='/images/favvy-logo.png'/><span>te</span><span class='munk'>munk</span></div>
+<a href='/' class="logo"><span>qu</span><img src='/images/favvy-logo.png'/><span>te</span><span class='munk'>munk</span></a>
 
 <!-- In the middle, search bar -->
 <div class="search-bar">
@@ -10,7 +10,7 @@
 	<% if logged_in? %>
 		<div></div>
 		<nav>
-			<div class="username"><p><%=current_user.goodreads_name%><p></div>
+			<a href='/' class="username"><p><%=current_user.goodreads_name%></p></a>
 			<%= button_to "", bookclubs_path, method: :get, class: "nav-bookclubs" %>
 			<%= button_to "", home_path, method: :get, class: "nav-notebook" %>
 			<%= button_to "", quote_search_path, method: :get, class: "nav-public" %>

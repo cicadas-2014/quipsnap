@@ -49,7 +49,9 @@ module ApplicationHelper
                   author: @author, book: @book)
   end
 
+  def current_page?() 
 
+  end
 
   
 

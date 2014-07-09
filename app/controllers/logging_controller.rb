@@ -11,7 +11,7 @@ class LoggingController < ApplicationController
 		session[:request_token] = request_token.token
 		session[:request_secret] = request_token.secret
 		redirect_to request_token.authorize_url
-	end
+	end 
 
 	# GET /sign_out
 	def sign_out
@@ -35,12 +35,18 @@ class LoggingController < ApplicationController
 			goodreads_user_id = user_xml.attributes["id"].value
 			name_xml = doc.at_xpath('//name')
 			goodreads_username = name_xml.children[0].inner_text
-	    @user = User.find_or_create_by(	goodreads_name: goodreads_username, 
-																    	goodreads_user_id: goodreads_user_id, 
-																    	auth_token: @access_token.token, 
-																    	auth_secret: @access_token.secret)
-	    session[:user_id] = @user.id
-	    redirect_to :home
+	    @user = User.find_by(	goodreads_name: goodreads_username)
+	    if @user
+	    	session[:user_id] = @user.id
+	    	redirect_to :home
+	    else
+	    	@user = User.create( goodreads_name: goodreads_username,
+												    	goodreads_user_id: goodreads_user_id, 
+												    	auth_token: @access_token.token, 
+												    	auth_secret: @access_token.secret)
+	    	session[:user_id] = @user.id
+	    	redirect_to :welcome
+	    end
 	  rescue
 	  	session.delete(:request_token)
 	  	session.delete(:request_secret)

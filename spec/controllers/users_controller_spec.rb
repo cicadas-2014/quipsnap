@@ -10,8 +10,8 @@ RSpec.describe UsersController, :type => :controller do
 
 			it "assigns quotes in descending chrono order to @quotes" do
 				get :index
-				quotes = Quote.all.order("created_at DESC")
-				expect(assigns(:quotes)).to eq quotes
+				quotes = Quote.all.order("created_at DESC").paginate(page: 1, per_page: 5)
+				expect(assigns(:quotes).paginate(page: 1, per_page: 5)).to eq quotes
 			end
 		end
 	end

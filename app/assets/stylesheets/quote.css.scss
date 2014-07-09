@@ -6,6 +6,28 @@
   margin: 0 auto;
   display: block;
 
+  .share-link {
+	  z-index: 2;
+	  left: 20.1em;
+	  bottom: 1.5em;
+	  position: relative;
+
+	  input {
+	    position: absolute;
+	    width: 250px;
+	    margin: 0;
+	    height: 20px;
+	    font-size: 12px;
+	    border-radius: 3px;
+	    background-color: rgba(230, 230, 230, 0.8);
+	    display: block;
+	    color: green;
+	    text-align: center;
+	    border: 1px solid rgba(230, 230, 230, 1.0);
+	    outline: none;
+	  }
+	} 
+
   .quote {
     cursor: default;
   }
