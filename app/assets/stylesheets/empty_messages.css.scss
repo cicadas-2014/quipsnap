@@ -1,10 +1,13 @@
 @import "style_guide";
 
 .no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes {
-	color: white;
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 10px;
+  margin: 5px;
+  margin-top: 80px;
+  text-align: center;
+  color: $header-background;
+  font-weight: 800;
+  font-size: 14px;
+  display: block;
 } 
 
 #no-comments-message {
