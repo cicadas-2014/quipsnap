@@ -67,9 +67,9 @@ div.quote a {
 	img {
 		opacity: 0.4;
 		display: inline-block;
-		max-width: 3%;
+		width: 10px;
 		vertical-align: top;
-		padding: 1em 1em 0 1em;
+		margin: 1em 1em 0 1em;
 	}
 
 	p {
@@ -95,7 +95,7 @@ div.quote-info {
 
 	a.search-author:hover {
 		background-color: $quote-info-color;
-		color: white;
+		color: $header-background;
 	}
 
 	a.search-title {
@@ -108,7 +108,7 @@ div.quote-info {
 
 	a.search-title:hover {
 		background-color: $quote-info-color;
-		color: white;
+		color: $header-background;
 	}
 
 }
@@ -121,7 +121,7 @@ div.quote-info {
 }
 
 .search-user:hover {
-	color: white;
+	color: $header-background;
 	background-color: $quote-info-color;
 }
 
