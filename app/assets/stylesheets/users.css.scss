@@ -47,6 +47,15 @@
   }
 }
 
+.pagination {
+  margin: 5px;
+  text-align: center;
+  color: white;
+  font-weight: 800;
+  font-size: $bookclub-my;
+  display: block;
+}
+
 
 button {
   display: inline-block;
