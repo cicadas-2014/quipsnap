@@ -47,7 +47,7 @@ module TwitterHelper
     	@page = open(link, :allow_redirections => :safe)
       doc = Nokogiri::HTML.parse(@page)
       content = @coder.decode(doc.css('h1.quoteText').children.text)
-    	author = doc.css('div.quoteText a').children.first.text.gsub! /"/, '|'
+    	author = doc.css('div.quoteText a').children.first.text.tr(%q{"'}, '')
       book = doc.css('div.quoteText i a').children.text
 
 
@@ -80,8 +80,7 @@ module TwitterHelper
 
 
       book = doc.css("script")[1].to_s.scan(/(?<=title":")(.*)(?=","title)/)[0][0]
-      author = doc.css("script")[1].to_s.scan(/(?<=authors":\[)(.*)(?=\],"content)/)[0][0].gsub! /"/, '|'
-
+      author = doc.css("script")[1].to_s.scan(/(?<=authors":\[)(.*)(?=\],"content)/)[0][0].tr(%q{"'}, '')
       @author = Author.find_or_create_by(name: author)
       @book = Book.find_or_create_by(title: book)
     
