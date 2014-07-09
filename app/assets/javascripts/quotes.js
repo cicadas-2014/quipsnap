@@ -1,21 +1,21 @@
 var Quote = {
 
 	bind: function() {
-		$(window).on('scroll', this.getMoreQuotesAjax.bind(this));
+		// $(window).on('scroll', this.getMoreQuotesAjax.bind(this));
 	},
 
 	init: function() {
 		this.bind();
 	},
 
-	getMoreQuotesAjax: function() {
-		var more_quotes_url;
-		more_quotes_url = $('.pagination .next_page').attr('href');
-		if (more_quotes_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
-			$('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />');
-			$.getScript(more_quotes_url);
-		}
-	},
+	// getMoreQuotesAjax: function() {
+	// 	var more_quotes_url;
+	// 	more_quotes_url = $('.pagination .next_page').attr('href');
+	// 	if (more_quotes_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
+	// 		$('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />');
+	// 		$.getScript(more_quotes_url);
+	// 	}
+	// },
 
 	// make quote draggable and droppable to add to bookclub
 	addToBookclub: function(quoteId,bookclubId,bookclubDiv) {
@@ -96,6 +96,6 @@ $(document).ready(function(){
 	makeDraggable();
 	// a quote on /quotes/:id should not be draggable 
 	$(".show-quote").children(".quote").draggable("destroy");
-	Quote.init();
+	// Quote.init();
 })
 

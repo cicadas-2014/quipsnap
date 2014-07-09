@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     if @quotes
       @quotes=@quotes.paginate(page: params[:page], per_page: 5)
     end
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def welcome
