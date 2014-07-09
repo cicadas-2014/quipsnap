@@ -10,4 +10,14 @@ footer {
   padding: 3px;
   border-top: 1px $quote-info-color solid;
   font-size: 14px;
+  clear: both;
+}
+
+.clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+   padding-bottom: 50px;
 }
