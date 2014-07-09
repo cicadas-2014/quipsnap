@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Search Quotes', :js => true do
 
+	let!(:quote) { create(:quote) }
+	let!(:quote_2) { create(:quote) }
+
 	scenario 'search by title' do
-		quote = create(:quote)
-		quote_2 = create(:quote)
 		visit home_path
 		find("option[value='book_title_cont']").click
 		fill_in "q_book_title_cont", with: quote.book.title
@@ -14,8 +15,6 @@ feature 'Search Quotes', :js => true do
 	end
 
 	scenario 'search by author' do
-		quote = create(:quote)
-		quote_2 = create(:quote)
 		visit home_path
 		find("option[value='author_name_cont']").click
 		fill_in "q_book_title_cont", with: quote.author.name
@@ -25,8 +24,6 @@ feature 'Search Quotes', :js => true do
 	end
 
 	scenario 'search by username' do
-		quote = create(:quote)
-		quote_2 = create(:quote)
 		visit home_path
 		find("option[value='user_goodreads_name_cont']").click
 		fill_in "q_book_title_cont", with: quote.user.goodreads_name
@@ -37,18 +34,32 @@ feature 'Search Quotes', :js => true do
 
 end
 
-# feature 'Quote Show Page', :js => true do
-# 	scenario 'from the home page' do
-# 		@quote = create(:quote)
-# 		visit home_path
-# 		expect(page).to have_button("See more")
-# 		click_button "See more"
-# 		expect(current_path).to eq "/quotes/#{@quote.id}"
-# 		expect(page).to have_content("This is a quote show page")
-# 	end
-# end
+feature 'Show Quote Page', :js => true do
+
+	let!(:user) { create(:user) }
+	let!(:quote) { create(:quote, user: user) }
+
+	scenario 'from the guest home page' do
+		visit home_path
+		find(:css, '.quote').double_click
+		expect(current_path).to eq "/quotes/#{quote.id}"
+		expect(page).to have_content(quote.content)
+		expect(page).to have_content('Discussion')
+	end
+
+	scenario "can get to a user's quote from a home page" do
+		allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+		allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
+		visit home_path
+		find(:css, '.quote').double_click
+		expect(current_path).to eq "/quotes/#{quote.id}"
+		expect(page).to have_content(quote.content)
+		expect(page).to have_content('Discussion')
+	end
+end
 
 feature "Favoriting Quotes", :js => true do
+
 	let!(:user) { create(:user) }
 	
 	scenario 'when a quote is not favorited' do
@@ -78,7 +89,7 @@ feature "Favoriting Quotes", :js => true do
 
 	scenario "when not logged in, no option to favorite or unfavorite" do
 		allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(false)
-		quote = create(:quote)
+		create(:quote)
 		visit home_path
 		expect(page).to_not have_selector(".liked-quote")
 		expect(page).to_not have_selector(".unliked-quote")
