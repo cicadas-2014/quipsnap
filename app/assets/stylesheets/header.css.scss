@@ -193,6 +193,22 @@ input.nav-signout {
   background: url($icon-signin) no-repeat center;
 }
 
+.nav-signin-twitter {
+  position: relative;
+  top: -5px;
+  margin: auto;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-size: 90% auto;
+  width: 160px;
+  height: 50px;
+  background: url($icon-signin-twitter) no-repeat center;
+}
+
+
+
 .username p {
   color: $logo-color-2;
   font-weight: bolder;
