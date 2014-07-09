@@ -1,7 +1,7 @@
 class Bookclub < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
-  validates_length_of :name, maximum: 140
+  validates_length_of :name, maximum: 60
 
   has_many  :bookclub_quotes
   has_many  :quotes, through: :bookclub_quotes

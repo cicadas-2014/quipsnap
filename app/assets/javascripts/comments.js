@@ -81,6 +81,9 @@ var Comment = {
 
 	appendResponse: function(response) {
 		if (response.isSuccess) {
+				// remove 'there are no comments message', if any
+				$("#no-comments-message").html("");
+
 				// if direct comment to a quote..., else is a reply to a comment
 				if (!(response.quote_id == null) && response.parent_id == null) {
 					$("div.quote-comments").append(this.commentHTML(response.comment_id, response.comment_content, response.user, true));

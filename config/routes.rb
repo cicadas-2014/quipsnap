@@ -8,8 +8,12 @@ Rails.application.routes.draw do
 	get '/retrieve_quotes' => "users#retrieve_quotes"
 
 	get '/sign_in' => "logging#sign_in"
+	get '/sign_in_twitter' => "logging#sign_in_twitter"
+
 	get '/sign_out' => "logging#sign_out"
 	get '/auth' => "logging#auth" 
+
+	get '/auth_twitter' => "logging#auth_twitter"
 
 	get '/quotes/:id' => "quotes#show", as: "quote"
 	get '/search' => "quotes#search", as: "quote_search"

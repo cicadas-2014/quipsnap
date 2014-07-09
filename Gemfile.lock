@@ -70,9 +70,11 @@ GEM
       rest-client (~> 1.6)
     hashie (2.1.2)
     hike (1.2.3)
+    htmlentities (4.3.2)
     http (0.6.1)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
+    httpclient (2.4.0)
     i18n (0.6.9)
     jasmine-core (2.0.0)
     jasmine-rails (0.9.1)
@@ -107,6 +109,7 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
+    open_uri_redirections (0.1.4)
     pg (0.17.1)
     phantomjs (1.9.7.1)
     polyamorous (1.0.0)
@@ -234,6 +237,8 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.1)
   faker
   goodreads
+  htmlentities
+  httpclient
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-qtip2-rails
@@ -241,6 +246,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy (~> 2.3.0)
   oauth
+  open_uri_redirections
   pg
   rails (= 4.1.4)
   rails_12factor

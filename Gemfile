@@ -35,6 +35,9 @@ gem 'rails_12factor', group: :production
 
 gem 'goodreads'
 gem 'twitter'
+gem 'open_uri_redirections'
+gem 'htmlentities'
+gem 'httpclient'
 
 gem 'will_paginate', '~> 3.0.5'
 

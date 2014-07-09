@@ -47,13 +47,18 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 1em;
             border-radius: 4px;
+            height: 122px;
 
             p {
-              width: 90%;
+              width: 60%;
               margin: 0 auto;
               color: $header-background;
               font-weight: 700;
               line-height: 25px;
+              
+              em {
+                color: white;
+              }
             }
 
             button {
