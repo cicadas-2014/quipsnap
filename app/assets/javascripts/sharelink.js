@@ -38,9 +38,6 @@ var ShareQuotes = {
     var url = hostName + localhost + '/quotes/' + quoteId;
     var html = "<div class='share-link'><input type='text' value='" + url + "'/></div>";
     
-    console.log(url);
-    console.log($('.show-quote').children);
-    console.log(index);
     $('.show-quote').children(':eq(' + index + ')').after(html);
   },
 
