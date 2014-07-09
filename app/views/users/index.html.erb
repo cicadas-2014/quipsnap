@@ -45,7 +45,7 @@
 
 <div class="no-user-quotes">
 	<% if !@search_term && !@favorite && !@bookclub && logged_in? && @quotes.empty? %>
-	You currently have no quotes. Add quotes from your Kindle by sharing via GoodReads.
+	You currently have no quotes. Share quotes from your Kindle via GoodReads or Twitter.
 	<% end %>
 </div>
 
@@ -56,9 +56,11 @@
 	<% end %>
 </div>
 
+
 <div id="infinite-scrolling">
 	<%= will_paginate @quotes %>
 </div>	
+
 
 <div id="comment-success">
 	Comment added!

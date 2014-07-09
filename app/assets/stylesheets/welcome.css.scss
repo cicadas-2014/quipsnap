@@ -6,8 +6,9 @@
   margin: 0 auto;
   background-color: $header-background;
   width: 1200px;
-  height: 40em;
+  height: 650px;
   border-radius: 4px;
+  opacity: 0.9;
 
   #carousel {
     margin: 100px auto 0 auto;
@@ -20,7 +21,6 @@
       width: 4000px;
       padding: 0;
       margin: 0;
-      border-radius: 4px;
 
       li {
         width: 1200px;
@@ -28,30 +28,41 @@
         height: 700px;
         list-style: none;
         float:  left;
-        border-radius: 4px;
 
         .slide {
           width: 1200px;
           height: 700px;
           background-color: transparent;
 
-          img {
+          .slide-1, .slide-2, .slide-3 {
             margin: 20px;
+            height: 425px;
+          }
+
+          .slide-1 {
             border-radius: 999px;
-            height: 400px;
-            width: 400px;
+            width: 425px;
+          }
+
+          .slide-2 {
+            border-radius: 4px;
+          }
+
+          .slide-3 {
+            border-radius: 4px;
           }
 
           .slide-bottom {
             width: 1200px;
+            margin-top: 15px;
             background-color: rgba(0, 0, 0, 0.5);
-            padding: 1em;
-            border-radius: 4px;
-            height: 122px;
+            padding: 15px;
+            height: 167px;
+            border-radius: 0 0 4px 4px;
 
             p {
               width: 60%;
-              margin: 0 auto;
+              margin: 15px auto 0 auto;
               color: $header-background;
               font-weight: 700;
               line-height: 25px;
@@ -63,7 +74,7 @@
 
             button {
               display: block;
-              margin: 10px auto 0 auto;
+              margin: 25px auto 0 auto;
               border: 2px solid $header-background;
               background-color: transparent;
               width: 100px;

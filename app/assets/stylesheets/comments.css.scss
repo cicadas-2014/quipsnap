@@ -78,7 +78,7 @@ form.comment-form, form.reply-comment-form {
 
 	input:hover{
 		background-color: black;
-		color: white;
+		color: $header-background;
 	}
 }
 
@@ -118,7 +118,7 @@ textarea.comment-box, textarea.reply-comment-box {
 	text-align: center;
 	z-index: 10000;
 	border-radius: 10px;	
-	color: white;
+	color: $header-background;
 	font-size: 15px;
 	font-family: $global-font;
 

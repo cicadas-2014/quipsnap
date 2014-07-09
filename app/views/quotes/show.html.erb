@@ -9,7 +9,7 @@
 	<% end %>
 	<div id="no-comments-message">
 		<% if @quote.comments.empty? %>
-			There are no comments
+			There are no comments. Be the first!
 		<% end %>
 	</div>
 	<%= render partial: "comments/index" %>
