@@ -1,0 +1,13 @@
+@import "style_guide";
+
+.no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes {
+	color: white;
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 10px;
+} 
+
+#no-comments-message {
+	padding-top: 10px;
+	color: white;
+}
