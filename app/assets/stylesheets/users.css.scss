@@ -85,16 +85,25 @@
 
 
 .home-quotes {
-  margin: 1em auto 0 auto;
+  margin: 0 auto;
 }
 
 .pagination {
-  margin: 5px;
+  margin: 20px;
   text-align: center;
-  color: white;
   font-weight: 800;
   font-size: $bookclub-my;
   display: block;
+
+  span, a {
+    color: white;
+    margin: 0 5px;
+  }
+
+  em {
+    color: #A9EBB2;
+    margin: 0 5px;
+  }
 
 }
 
