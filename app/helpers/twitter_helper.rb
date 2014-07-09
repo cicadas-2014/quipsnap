@@ -47,8 +47,8 @@ module TwitterHelper
     	@page = open(link, :allow_redirections => :safe)
       doc = Nokogiri::HTML.parse(@page)
       content = @coder.decode(doc.css('h1.quoteText').children.text)
-    	author = page.css('div.quoteText a').children.first.text
-      book = page.css('div.quoteText i a').children.text
+    	author = doc.css('div.quoteText a').children.first.text
+      book = doc.css('div.quoteText i a').children.text
 
 
       @author = Author.find_or_create_by(name: author)
