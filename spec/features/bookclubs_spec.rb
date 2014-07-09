@@ -12,7 +12,6 @@ feature 'Show Bookclubs', :js => true do
     find('.nav-bookclubs').click
     expect(current_path).to eq('/bookclubs')
     expect(page).to have_content(bookclub.name)
-    expect(page).to have_content(bookclub.description)
   end
 
   scenario 'user not logged in' do
