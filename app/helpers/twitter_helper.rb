@@ -13,11 +13,11 @@ module TwitterHelper
 
 
 	def encoder
-		@coder = HTMLEntities.new
+		@coder ||= HTMLEntities.new
 	end
 
 	def twitter_client
-      @twitter_client = Twitter::REST::Client.new do |config|
+      @twitter_client ||= Twitter::REST::Client.new do |config|
         config.consumer_key = ENV['TWITTER_KEY']
         config.consumer_secret = ENV['TWITTER_SECRET']
       end
@@ -28,7 +28,7 @@ module TwitterHelper
     tweet_amazon_links = []
     link_search = /(http:\/\/t.co\/)([a-zA-Z0-9]{10})/
 
-    @twitter_client.user_timeline(user.goodreads_name).each do |tweet|
+    twitter_client.user_timeline(user.goodreads_name).each do |tweet|
       if tweet.source.include?("kindle.amazon.com")
     		url = tweet.text.scan(link_search).first.join("")
     		link = ""
@@ -46,7 +46,7 @@ module TwitterHelper
     tweet_goodreads_links.each do |link|
     	@page = open(link, :allow_redirections => :safe)
       doc = Nokogiri::HTML.parse(@page)
-      content = @coder.decode(doc.css('h1.quoteText').children.text)
+      content = encoder.decode(doc.css('h1.quoteText').children.text)
     	author = doc.css('div.quoteText a').children.first.text.tr(%q{"'}, '')
       book = doc.css('div.quoteText i a').children.text
 
