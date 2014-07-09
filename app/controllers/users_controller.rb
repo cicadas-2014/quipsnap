@@ -12,20 +12,6 @@ class UsersController < ApplicationController
       @quotes=@quotes.paginate(page: params[:page], per_page: 5)
     end
 
-    # respond_to do |format|
-    #   format.html { 
-    #     if logged_in?
-    #       render :index
-    #     end
-    #   }
-    #   format.js {
-    #     if !logged_in?
-    #       render js: :index
-    #     end
-    #   }
-    # end
-
-
     respond_to do |format| 
       format.html {render :index if logged_in?}
       format.js
