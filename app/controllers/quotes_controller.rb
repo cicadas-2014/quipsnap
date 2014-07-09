@@ -8,7 +8,6 @@ class QuotesController < ApplicationController
   end
 
   def search_by_category
-    p params
     @search = Quote.search(params[:search_category] => params[:q][:book_title_cont])
     @search_term = convert_category_search
 
