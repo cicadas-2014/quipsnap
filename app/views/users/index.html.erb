@@ -6,6 +6,50 @@
 <% end %>
 <% end %>
 
+
+<div class='page-info'>
+	<% if @bookclub %>
+	Bookclub: <%= @bookclub.name %>
+	<div class='page-info-bc-desc'><%= @bookclub.description %></div>
+	<% elsif @favorite %>
+	My Favorites
+	<% elsif @search_term %>
+	<%= @search_term %>
+	<% elsif logged_in? %>
+	My Notebook
+	<% else %>
+	All Quotes
+	<% end %>
+	
+</div>
+
+<!-- DISPLAY MESSAGE IF NO QUOTES TO SHOW -->
+
+<div class="no-search-results">
+	<% if @search_term && @quotes.empty? %>
+	No quotes matched your search.
+	<% end %>
+</div>
+
+<div class="no-favorites">
+	<% if @favorite && @quotes.empty? %>
+	You currently have no favorited quotes.
+	<% end %>
+</div>
+
+<div class="no-bookclub-quotes">
+	<% if @bookclub && @quotes.empty? %>
+	There are currently no quotes in this bookclub. You can add quotes to the bookclub by dragging and dropping quote cards.
+	<% end %>
+</div>
+
+<div class="no-user-quotes">
+	<% if !@search_term && !@favorite && !@bookclub && logged_in? && @quotes.empty? %>
+	You currently have no quotes. Add quotes from your Kindle by sharing via GoodReads.
+	<% end %>
+</div>
+
+<!-- DISPLAY THE QUOTES, IF ANY -->
 <div class="quotes">
 	<% @quotes.each do |quote| %>
 	<%= render partial: "quotes/show_quote_limit", locals: {quote: quote} %>

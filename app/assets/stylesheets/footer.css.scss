@@ -1,0 +1,13 @@
+@import "style_guide";
+
+footer {
+  width: 100%;
+  margin: 0;
+  background-color: $header-background;
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  padding: 3px;
+  border-top: 1px $quote-info-color solid;
+  font-size: 14px;
+}

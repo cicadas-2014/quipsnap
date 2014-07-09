@@ -7,6 +7,11 @@
 	<% if !logged_in? %>
 		<div id="not-logged-in-comments-message">Please login to add comments</div>
 	<% end %>
+	<div id="no-comments-message">
+		<% if @quote.comments.empty? %>
+			There are no comments
+		<% end %>
+	</div>
 	<%= render partial: "comments/index" %>
 </div>
 

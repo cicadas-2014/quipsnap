@@ -188,11 +188,12 @@ var Users = {
   },
 
   showBookclubQuotes: function(response) {
-
+    $(".page-info").html("Bookclub: " + response.name+"<div class='page-info-bc-desc'>" + response.desc + "</div>");
     var quoteHTML = "";
-
     var quotes = response.quotes;
     var favs = response.is_favorites;
+
+    this.displayEmptyMessage(quotes);
 
     for (var i=0; i<quotes.length; i++) {
       quoteHTML += this.getQuoteHtml(quotes[i], favs[i]);
@@ -200,6 +201,13 @@ var Users = {
     
     $('.quotes').html(quoteHTML);
     makeDraggable();
+  },
+
+  displayEmptyMessage: function(quotes) {
+    $(".no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes").html("");
+    if (quotes.length == 0) {
+      $(".no-bookclub-quotes").html(" There are currently no quotes in this bookclub. You can add quotes to the bookclub by dragging and dropping quote cards.");
+    }
   },
 
   // redirect the user to the quote show page upon double click
