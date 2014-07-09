@@ -4,8 +4,6 @@ class PullQuotesFromGoodreads
   include TwitterHelper
 
   def perform
-    twitter_client
-    encoder
     User.all.each do |user|
     	if user.is_twitter 
     		create_quotes_from_twitter(user)
