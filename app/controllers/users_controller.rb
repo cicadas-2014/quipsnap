@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   include ApplicationHelper
+  include TwitterHelper
 
   # ROOT
   def index
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
 
   def retrieve_quotes
     if current_user.is_twitter 
+      p "trying to pull twitter quotes"
       create_quotes_from_twitter(current_user)
     else
       get_quotes(current_user)
