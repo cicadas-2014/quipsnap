@@ -41,10 +41,13 @@ module ApplicationHelper
     else
       @book = nil
     end
+
+    #prevent line break <br> injections
+    content = quote.body.gsub("<br>", "")
     
     @author = Author.find_or_create_by(name: author_book_array[0])
     
-    Quote.create( content: quote.body, 
+    Quote.create( content: content, 
                   goodreads_link: quote.link, 
                   author: @author, book: @book)
   end
