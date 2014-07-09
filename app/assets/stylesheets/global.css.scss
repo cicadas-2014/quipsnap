@@ -3,7 +3,7 @@
  /* GLOBAL */
 
 .container {
-  margin-top: 70px;
+  margin-top: 57px;
   padding-bottom: 50px;
 }
 
@@ -11,6 +11,8 @@ html, html a {
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
     text-rendering: optimizelegibility;
+    margin: 0;
+    height: 100%;
 }
 
 * {
@@ -26,5 +28,6 @@ html, html a {
 body {
   background-color: $main-background;
   margin: 0;
+  height: 100%;
 }
 

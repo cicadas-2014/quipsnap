@@ -11,7 +11,7 @@ header {
   top: 0;
   z-index: 5;
   padding: 3px;
-  border-bottom: 1px $quote-info-color solid;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* LOGO */

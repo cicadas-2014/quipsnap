@@ -4,7 +4,7 @@
 
 .welcome {
   margin: 0 auto;
-  background-color: white;
+  background-color: $header-background;
   width: 90%;
   height: 40em;
   border-radius: 4px;
@@ -51,7 +51,7 @@
             p {
               width: 90%;
               margin: 0 auto;
-              color: white;
+              color: $header-background;
               font-weight: 700;
               line-height: 25px;
             }
@@ -59,11 +59,11 @@
             button {
               display: block;
               margin: 10px auto 0 auto;
-              border: 2px solid white;
+              border: 2px solid $header-background;
               background-color: transparent;
               width: 100px;
               height: 30px;
-              color: white;
+              color: $header-background;
               font-weight: 900;
               font-size: 18px;
               border-radius: 4px;
@@ -74,7 +74,7 @@
             }
 
             button:hover {
-              background-color: white;
+              background-color: $header-background;
               color: rgba(0, 0, 0, 0.5);
             }
           }
