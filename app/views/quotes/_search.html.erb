@@ -3,10 +3,9 @@
 		<option value="author_name_cont">AUTHOR</option>
 		<option value="user_goodreads_name_cont">USER</option>
 	</select>
-	
+
 <%= search_form_for @search, url: quote_search_category_path do |f| %>
   <%= f.search_field :book_title_cont,:placeholder => "Search Quotes by Book, Author, or User" %>
-
 	
   <%= f.submit "", class: "search" %>
 <% end %>
