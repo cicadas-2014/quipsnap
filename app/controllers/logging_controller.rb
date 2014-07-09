@@ -69,6 +69,7 @@ class LoggingController < ApplicationController
 					auth_token: @access_token.token, 
 					auth_secret: @access_token.secret)
 				session[:user_id] = @user.id
+				PullQuotesFromGoodreads.new.perform
 				redirect_to :welcome
 			end
 		rescue
@@ -99,6 +100,7 @@ class LoggingController < ApplicationController
 					auth_secret: @access_token.secret,
 					is_twitter: true)
 				session[:user_id] = @user.id
+				PullQuotesFromGoodreads.new.perform
 				redirect_to home_path
 			end
 		rescue
