@@ -54,15 +54,16 @@ module TwitterHelper
       @author = Author.find_or_create_by(name: author)
       @book = Book.find_or_create_by(title: book)
     
+      if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
+        content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
+      end
+      
       Quote.create( content: content,
                     author: @author,
                     goodreads_link: link,
                     user_id: user.id,
                     book: @book)
 
-      if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
-        content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
-      end
 
     end
 
