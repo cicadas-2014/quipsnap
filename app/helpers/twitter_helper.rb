@@ -57,7 +57,9 @@ module TwitterHelper
       if content.include?("â\u0080\u009C") || content.include?("â\u0080\u009D")
         content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
       end
-      
+
+      content.gsub!("â\u0080\u0099d", "'")
+
       Quote.create( content: content,
                     author: @author,
                     goodreads_link: link,
@@ -78,7 +80,7 @@ module TwitterHelper
         content.strip!.gsub!("â\u0080\u009C","'").gsub!("â\u0080\u009D","'")
       end
 
-
+      content.gsub!("â\u0080\u0099d", "'")
 
       book = doc.css("script")[1].to_s.scan(/(?<=title":")(.*)(?=","title)/)[0][0]
       author = doc.css("script")[1].to_s.scan(/(?<=authors":\[)(.*)(?=\],"content)/)[0][0].tr(%q{"'}, '')
