@@ -15,7 +15,6 @@ var Quote = {
 			if (more_quotes_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
 				$('.pagination').html('<img src="/images/ajax-loader.gif" alt="Loading..." title="Loading..." />');
 				setTimeout(function() {$.getScript(more_quotes_url);}, 2000);
-				// $.getScript(more_quotes_url);
 			}
 			else {
 				$('.pagination').html();
