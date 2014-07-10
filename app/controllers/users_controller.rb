@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
+    redirect_to :home unless logged_in?
     @search, @quotes = search_quotes
   end
 
