@@ -94,9 +94,12 @@ select {
   background-color: lightgrey;
   border: 2px solid lightgrey;
   border-radius: 3px;
-  height: 24px;
+  height: 25px;
   size: 3;
-  padding: 2px;
+  position: relative;
+  bottom: 1px;
+  right: 2px;
+  margin-left: 20px;
 }
 
 
@@ -126,6 +129,9 @@ select {
     text-align: center;
     cursor: pointer;
     opacity: 0.4;
+    position: relative;
+    top: 3px;
+    left: 4px;
   }
 
   .search {
@@ -143,7 +149,7 @@ select {
 .username {
   position: absolute;
   right: 235px;
-  width: 280px;
+  width: 200px;
   text-align: right;
 
   p {

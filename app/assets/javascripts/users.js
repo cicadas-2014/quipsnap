@@ -206,7 +206,7 @@ var Users = {
   displayEmptyMessage: function(quotes) {
     $(".no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes").html("");
     if (quotes.length == 0) {
-      $(".no-bookclub-quotes").html(" There are currently no quotes in this bookclub. You can add quotes to the bookclub by dragging and dropping quote cards.");
+      $(".page-info").html("<div class='no-bookclub-quotes'>There are currently no quotes in this bookclub. You can add quotes to the bookclub by dragging and dropping quote cards.</div>");
     }
   },
 
