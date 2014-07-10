@@ -21,42 +21,56 @@ module ApplicationHelper
     end
   end
 
+  def parse_page_for_content_something(link)
+    @page = Nokogiri::HTML(open(link))
+    @links = @page.css('.quoteText a')
+    @author_book_array = []
+    @links.each do |link|
+      @author_book_array << link.inner_text
+    end
+    @author_book_array
+  end
+
+  def parse_author
+    @author_book_array[0]
+  end
+
+  def parse_book
+    @author_book_array[1]
+  end
+
+  def parse_image
+    @image_url = nil
+    @image = @page.at_css(".quoteDetails.fullLine img")
+    @image_url = @image.attributes["src"].value if @image
+  end
+
+  def parse_content(quote)
+    quote.body.gsub("<br>","") #prevent line break <br> injections
+  end
+
+  def create_book
+    @book = nil
+    @book = Book.find_or_create_by(title: parse_book, image_url: parse_image) if parse_author
+  end
+
+  def create_author
+    @author = Author.find_or_create_by(name: parse_author)
+  end
+
+  def create_quote(quote)
+    @quote = Quote.create(content: parse_content(quote), goodreads_link: quote.link, author: @author, book: @book)
+  end
+
   def create_new_quote(quote)
-    page = Nokogiri::HTML(open(quote.link))
-    links = page.css('.quoteText a')
-    author_book_array = []
-    links.each do |link|
-      author_book_array << link.inner_text
-    end
-    image = page.at_css(".quoteDetails.fullLine img")
-    
-    if image
-      @image_url = image.attributes["src"].value
-    else
-      @image_url = nil
-    end
-    
-    if author_book_array[1]
-      @book = Book.find_or_create_by(title: author_book_array[1], image_url: @image_url) 
-    else
-      @book = nil
-    end
-
-    #prevent line break <br> injections
-    content = quote.body.gsub("<br>", "")
-    
-    @author = Author.find_or_create_by(name: author_book_array[0])
-    
-    Quote.create( content: content, 
-                  goodreads_link: quote.link, 
-                  author: @author, book: @book)
+    parse_page_for_content_something(quote.link)
+    parse_book
+    parse_image  
+    parse_author
+    parse_content(quote)
+    create_book
+    create_author
+    create_quote(quote)
   end
-
-  def current_page?() 
-
-  end
-
-  
-
 
 end
