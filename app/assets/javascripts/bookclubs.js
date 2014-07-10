@@ -29,7 +29,6 @@ var Bookclubs = {
     ajaxRequest.done(this.showBookclubListHtml.bind(this));
   },
 
-
   displayNewBookclubForm: function(e) {
     $("form#new_bookclub").show(500);
   },
@@ -60,7 +59,7 @@ var Bookclubs = {
 
     if ($.inArray(currentUserId, bookclub.user_ids) == -1) {
       controller += "<button class='bookclub-join'>Join</button>";
-      belongTo = "class='bookclub-non'"
+      belongTo = "class='bookclub-non'";
     } else {
       belongTo = "class='bookclub-belong'";
     }
@@ -157,7 +156,7 @@ var Bookclubs = {
     $(e.target).closest('a').remove();
 
     $.ajax({
-      url: '/bookclubs/' + clubId.toString() + '/delete',
+      url: '/bookclubs/' + clubId.toString(),
       type: 'DELETE'
     }).done(function(response) {});
 

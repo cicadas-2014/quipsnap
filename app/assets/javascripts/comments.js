@@ -1,6 +1,65 @@
 var Comment = {
 	commentChain: [],
 
+	bind: function() {
+		// when user adds a comment
+		$("div.quotes, .show-quote").on("click", "button.add-comment", this.add.bind(this));
+		// when user submits a comment
+		$("div.quotes, .show-quote").on("submit", "form.comment-form", this.submit.bind(this));
+		// from quote show page, user can reply to a comment
+		$("div.quote-comments").on("click", "button.reply-comment", this.replyForm.bind(this));
+		// from quote show page, user submits a reply to a comment
+		$("div.quote-comments").on("submit", "form.reply-comment-form", this.submitReply.bind(this));
+		// user cancels adding a comment or a reply
+		$("div.quotes, .show-quote").on("click", ".cancel-comment", this.removeForm.bind(this));
+		$("div.quote-comments").on("click", ".cancel-reply", this.removeForm.bind(this));
+		// from quote show page, user can expand replies for a comment
+		$("div.quote-comments").on("click", "button.more-comments", this.expandReplies.bind(this));
+		// from quote show page, user can collapse replies for a comment
+		$("div.quote-comments").on("click", "button.less-comments", this.collapseReplies.bind(this));
+	},
+
+	add: function(e) {
+		e.preventDefault();
+		$("form.comment-form").remove();
+		this.displayForm($(e.target).parent().parent(), $(e.target).attr("data-quote-id"));
+	},
+
+	submit: function(e) {
+		e.preventDefault();
+		var comment = $(e.target).children("textarea.comment-box").val();
+		var action = $(e.target).attr("action");
+		this.ajaxRequestToAdd(comment, action);
+	},
+
+	replyForm: function(e) {
+		e.preventDefault();
+		$("form.reply-comment-form").remove();
+		var parentCommentId = $(e.target).parent().attr("data-comment-id");
+		this.displayReplyForm($(e.target).parent(), parentCommentId);
+	},
+
+	submitReply: function(e) {
+		e.preventDefault();
+		var reply = $(e.target).children("textarea.reply-comment-box").val();
+		var action = $(e.target).attr("action");
+		this.ajaxRequestToAdd(reply, action);
+	},
+
+	expandReplies: function(e) {
+		e.preventDefault();
+		$(e.target).parent().children('div.quote-comment').show();
+		$(e.target).removeClass("more-comments");
+		$(e.target).addClass("less-comments");
+	},
+
+	collapseReplies: function(e) {
+		e.preventDefault();
+		$(e.target).parent().children('div.quote-comment').hide();
+		$(e.target).removeClass("less-comments");
+		$(e.target).addClass("more-comments");
+	},
+
 	formHTML: function(quoteId){
 		return "<form class='comment-form' action='/quotes/" + quoteId + "/comments/create' method='post'> " +
 		"<textarea class='comment-box' name='comment' placeholder='Your comment here' /></textarea><br />" +
@@ -138,56 +197,8 @@ var Comment = {
 }
 
 $(document).ready(function(){
-	// when user adds a comment
-	$("div.quotes, .show-quote").on("click", "button.add-comment", function(e){
-		e.preventDefault();
-		$("form.comment-form").remove();
-		Comment.displayForm($(e.target).parent().parent(), $(e.target).attr("data-quote-id"));
-	});
 
-	// when user submits a comment
-	$("div.quotes, .show-quote").on("submit", "form.comment-form", function(e){
-		e.preventDefault();
-		var comment = $(e.target).children("textarea.comment-box").val();
-		var action = $(e.target).attr("action");
-		Comment.ajaxRequestToAdd(comment, action);
-	});	
-
-	// from quote show page, user can reply to a comment
-	$("div.quote-comments").on("click", "button.reply-comment", function(e){
-		e.preventDefault();
-		$("form.reply-comment-form").remove();
-		var parentCommentId = $(e.target).parent().attr("data-comment-id");
-		Comment.displayReplyForm($(e.target).parent(), parentCommentId)
-	});
-
-	// from quote show page, user submits a reply to a comment
-	$("div.quote-comments").on("submit", "form.reply-comment-form", function(e){
-		e.preventDefault();
-		var reply = $(e.target).children("textarea.reply-comment-box").val();
-		var action = $(e.target).attr("action");
-		Comment.ajaxRequestToAdd(reply, action);
-	});
-
-	// user cancels adding a comment or a reply
-	$("div.quotes, .show-quote").on("click", ".cancel-comment", Comment.removeForm.bind(this));
-	$("div.quote-comments").on("click", ".cancel-reply", Comment.removeForm.bind(this));
-
-	// from quote show page, user can expand replies for a comment
-	$("div.quote-comments").on("click", "button.more-comments", function(e){
-		e.preventDefault();
-		$(e.target).parent().children('div.quote-comment').show();
-		$(e.target).removeClass("more-comments");
-		$(e.target).addClass("less-comments");
-	});
-
-	// from quote show page, user can collapse replies for a comment
-	$("div.quote-comments").on("click", "button.less-comments", function(e){
-		e.preventDefault();
-		$(e.target).parent().children('div.quote-comment').hide();
-		$(e.target).removeClass("less-comments");
-		$(e.target).addClass("more-comments");
-	});
+	Comment.bind();
 
 	// if user is on the quote show page, send an ajax request to get all comment replies
 	if ($("div.quote-comments").length > 0) {
