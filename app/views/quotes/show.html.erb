@@ -4,7 +4,7 @@
 
 <div class='quote-comments'>
 	<div id="comments-title">Discussion</div>
-	<% if !logged_in? %>
+	<% unless logged_in? %>
 		<div id="not-logged-in-comments-message">Please login to add comments</div>
 	<% end %>
 	<div id="no-comments-message">
