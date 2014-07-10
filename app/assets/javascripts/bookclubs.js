@@ -134,7 +134,7 @@ var Bookclubs = {
 
   // data.bookclub_id can be used to access the li of the bookclub by id.
   showJoinBookclub: function(data) {
-    $('li#' + data.bookclub_id.toString()).addClass('bookclub-belong');
+    $('a#' + data.bookclub_id.toString()).attr('class','bookclub-belong');
   },
 
   // admin options currently only has delete command to remove bookclub
