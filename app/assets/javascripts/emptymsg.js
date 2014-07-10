@@ -8,7 +8,7 @@ $(document).ready(function(){
   if ( $('.no-bookclub-quotes').html() == "\n" ) {
     $('.no-bookclub-quotes').remove();
   }
-  if ( $('.no-user-quotes').html() ) {
+  if ( $('.no-user-quotes').html() == "\n" ) {
     $('.no-user-quotes').remove();
   }
 });
