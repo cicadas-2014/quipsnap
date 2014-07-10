@@ -3,33 +3,40 @@ class UsersController < ApplicationController
   include ApplicationHelper
   include TwitterHelper
 
-  # ROOT
   def index
-  	@search = logged_in? ? Quote.where(user_id: current_user.id).search(params[:q]) : Quote.search(params[:q])
-  	@quotes = @search.result.includes(:user).order("created_at DESC")
+    @search, @quotes = search_quotes
+
   	@bookclubs = logged_in? ? current_user.bookclubs : nil
+
     if @quotes
-      @quotes=@quotes.paginate(page: params[:page], per_page: 5)
+      @quotes = @quotes.paginate(page: params[:page], per_page: 5)
     end
 
     respond_to do |format| 
       format.html {render :index if logged_in?}
       format.js
     end
+
   end
 
   def welcome
-    @search = logged_in? ? Quote.where(user_id: current_user.id).search(params[:q]) : Quote.search(params[:q])
-    @quotes = @search.result.includes(:user).order("created_at DESC")
+    @search, @quotes = search_quotes
   end
 
   def retrieve_quotes
     if current_user.is_twitter 
-      p "trying to pull twitter quotes"
       create_quotes_from_twitter(current_user)
     else
       get_quotes(current_user)
     end
+  end
+
+  private 
+
+  def search_quotes
+    search = logged_in? ? Quote.where(user_id: current_user.id).search(params[:q]) : Quote.search(params[:q])
+    quotes = search.result.includes(:user).order("created_at DESC")
+    return search, quotes
   end
 
 end
