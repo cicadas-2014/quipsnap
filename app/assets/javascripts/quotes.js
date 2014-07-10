@@ -29,7 +29,6 @@ var Quote = {
 			type: "post"
 		});
 
-
 		ajaxRequest.done(function(response){
 			if (response.quote_added == false) {
 				bookclubDiv.addClass("``mouse-drop-false");
@@ -75,7 +74,6 @@ var makeDraggable = function() {
 		var quoteId = $(this).attr("id")
 		$(this).data('orgTop', top);
 		$(this).data('orgLeft', left);
-
 	});
 
 	//quote can be dropped on bookclub li and will be added to bookclub quotes
@@ -87,13 +85,10 @@ var makeDraggable = function() {
 			var bookclubId = $(this).attr("id");
 			var bookclubDiv = $(this)
 			Quote.addToBookclub(quoteId,bookclubId,bookclubDiv);
-			
 		},
 		over:Quote.almostToBookclub,
 		out:Quote.offOfBookclub
-
 	});
-
 };
 
 $(document).ready(function(){

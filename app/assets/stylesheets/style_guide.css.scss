@@ -16,9 +16,6 @@ $logo-color : #413F3F;
 $logo-color-2: #208859;
 $comment-content-background: rgba(107, 179, 130, 0.5);
 $comment-color: rgba(3, 91, 44, 1);
-// $instructions-background : #CFFFC7;
-// $instructions-border : white;
-// $instructions-font : black;
 $instructions-font-color : #333333;
 $instructions-font-size : 11px;
 $book-color-1 : rgba(255, 106, 105, 1.0);
@@ -30,7 +27,7 @@ $book-page-font: #4E4D4D;
 $error-background: #df4856;
 $success-background: #87c79c;
 
-// Fonts
+/* Fonts */
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Lobster+Two:700);
 $global-font : 'Lato', sans-serif;
@@ -46,7 +43,7 @@ $bookclub-font : 15px;
 $bookclub-my: 20px;
 $page-info: 24px;
 
-/* Icons*/
+/* Icons */
 $logo : "/images/logo2.png";
 $icon-bookclubs : "/icons/glyphicons_319_sort.png";
 $icon-notebook: "/icons/glyphicons_330_blog.png";

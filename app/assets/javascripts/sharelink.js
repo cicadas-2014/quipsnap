@@ -52,7 +52,5 @@ var ShareQuotes = {
 };
 
 $(document).ready(function() {
-
   ShareQuotes.init();
-
 });

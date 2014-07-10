@@ -1,4 +1,4 @@
-var quoteFavorites = {
+var QuoteFavorites = {
 
 	init: function() {
 		// user favorites a quote
@@ -40,7 +40,7 @@ var quoteFavorites = {
 	}
 };
 
-var userFavorites = {
+var UserFavorites = {
 	init: function() {
 		$(".nav-favorites").on("click", this.getFavoriteQuotes.bind(this));
 	},
@@ -110,6 +110,6 @@ var userFavorites = {
 };
 
 $(document).ready(function(){
-	quoteFavorites.init();
-	userFavorites.init();
+	QuoteFavorites.init();
+	UserFavorites.init();
 });

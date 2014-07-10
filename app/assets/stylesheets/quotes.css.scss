@@ -192,22 +192,6 @@ div.quote-options > * , .show-quote {
 	color: transparent;  /* If you don't want the button text to show up */
 }
 
-.ui-droppable {
- 	// background-color: $users-bookclubs;
- 	// padding: 0;
- }
- .mouse-hover {
- 	// background-color: $hover-bookclubs;
- }
-
- .mouse-drop-true {
- 	// background-color: $bookclubs-add-quote;
- }
-
- .mouse-drop-false {
- 	// background-color: $bookclubs-fail-quote;
- }
-
 .ui-draggable-dragging {
 	transform:rotate(3deg);
 	-ms-transform:rotate(3deg); /* IE 9 */

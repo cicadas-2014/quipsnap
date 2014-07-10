@@ -29,7 +29,6 @@ var Bookclubs = {
     ajaxRequest.done(this.showBookclubListHtml.bind(this));
   },
 
-
   displayNewBookclubForm: function(e) {
     $("form#new_bookclub").show(500);
   },
