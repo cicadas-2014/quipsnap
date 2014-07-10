@@ -80,7 +80,7 @@ var UserFavorites = {
 	displayEmptyMessage: function(quotes) {
 		$(".no-search-results, .no-favorites, .no-bookclub-quotes, .no-user-quotes").html("");
 		if (quotes.length == 0) {
-			$(".no-favorites").html("You currently have no favorited quotes.");
+			$(".page-info").after("<div class='no-favorites'>You currently have no favorited quotes.</div>");
 		}
 	},
 

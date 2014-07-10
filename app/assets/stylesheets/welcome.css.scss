@@ -6,14 +6,14 @@
   margin: 0 auto;
   background-color: $header-background;
   width: 1200px;
-  height: 650px;
+  height: 500px;
   border-radius: 4px;
   opacity: 0.9;
 
   #carousel {
     margin: 100px auto 0 auto;
     width: 1200px;
-    height: 700px;
+    height: 500px;
     overflow:hidden;
     border-radius: 4px;
 
@@ -25,23 +25,23 @@
       li {
         width: 1200px;
         text-align: center;
-        height: 700px;
+        height: 500px;
         list-style: none;
         float:  left;
 
         .slide {
           width: 1200px;
-          height: 700px;
+          height: 500px;
           background-color: transparent;
 
           .slide-1, .slide-2, .slide-3 {
             margin: 20px;
-            height: 425px;
+            height: 300px;
           }
 
           .slide-1 {
             border-radius: 999px;
-            width: 425px;
+            width: 300px;
           }
 
           .slide-2 {
@@ -74,7 +74,7 @@
 
             button {
               display: block;
-              margin: 25px auto 0 auto;
+              margin: 15px auto 0 auto;
               border: 2px solid $header-background;
               background-color: transparent;
               width: 100px;

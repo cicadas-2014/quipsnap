@@ -5,6 +5,7 @@
 	float: right;
 	background-color: $users-bookclubs;
 	color: white;	
+	font-weight: 700;
 	
 	a {
 		color: $quote-info-color;
@@ -32,7 +33,7 @@
 		margin: 0px;
 
 		li.mouse-hover .cover-top, li.mouse-hover .cover-bottom {
-				background-color: #b24a49;
+				background-color: $book-hover-color;
 				border: none;
 		}
 
@@ -82,7 +83,7 @@
 		}
 
 		li:hover .cover-top, li:hover .cover-bottom {
-			background-color: #b24a49;
+			background-color: $book-hover-color;
 			border: none;	
 		}		
 	}
@@ -95,7 +96,7 @@
 }
 
 .bookclubs-all {
-	max-width: 35%;
+	max-width: 70%;
 	background-color: transparent;
 	margin: 0 auto;
 
@@ -188,6 +189,7 @@
 		      text-align: center;
 		      border: 1px solid #AEF5AF;
 		      outline: none;
+		      font-weight: 600;
 				}
 
 				.bookclub-join:hover {
