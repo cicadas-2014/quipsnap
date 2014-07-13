@@ -36,5 +36,3 @@ Our project management and organization. We use five boards to track our project
 ## Blog
 Our blogging throughout the project process
 * [Ken's blog](http://ksin.github.io/)
-
-## Database Schema 
